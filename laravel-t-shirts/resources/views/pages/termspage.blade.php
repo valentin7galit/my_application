@@ -1,0 +1,37 @@
+@extends('layouts')
+
+@section('title')
+    Terms and Conditions
+@endsection
+
+@section('content')
+    <div class="container py-3">
+        <h1 class="text-center py-2">Terms and Conditions</h1>
+        <h4>Acceptance of Terms and Conditions</h4>
+        <p>Use of this website is subject to your acceptance of the terms and conditions contained herein. All users of this website understand and agree that their use by this website constitutes acceptance of the terms and conditions set out in this legal notice. T-shirts, reserves the right to change the terms and conditions at any time without notice. If you do not agree to these terms, you may not use this website.</p>
+        <h4>Trademarks</h4>
+        <p>This website contains many trademarks, copyrights and / or logos of the T-shirts and may also contain several protected trademarks of the many T-shirt affiliates. Such trademarks remain the property of their respective owners. The user acknowledges and acknowledges the ownership of these trademarks and understands that he does not acquire, by using this website, any rights, titles or interests in the trademarks. The user agrees that he will not modify, modify and / or exploit the marks and will not participate in any activity that modifies and / or exploits these marks. All rights to these trademarks are reserved. Any use of the marks without express written permission is strictly prohibited.</p>
+        <h4>Prohibited Use</h4>
+        <p>Any use of this website for any illegal or unacceptable purpose is strictly prohibited. The user agrees that he will not use this website to engage in any activity that could be considered illegal, harmful to others or give rise to civil liability. Such activities include, but are not limited to: (i) activities that involve the transmission of information that is illegal, threatening, harassing, obscene, sexually explicit, pornographic, hateful, profane, defamatory or defamatory; (ii) activities involving the transmission of unwanted messages or spam; (iii) activities involving the promotion or use of viruses; (iv) activities that violate any law, regulation or statute; and / or (v) activities that infringe any legally protected property rights, etc. By using this site, the user agrees that all information transmitted to or with the use of this site cannot and should not be considered confidential or proprietary. T-shirts reserves the right to monitor transmissions and to investigate any alleged prohibited use of this website and to disclose any information regarding such prohibited use. Any breach of this or any other section contained herein may result in termination of service and any other action that T-shirts deems appropriate in these circumstances.</p>
+        <h4>Third-Party Relationships</h4>
+        <p>This website may contain links to other sites. These links are provided only to assist the user. The information presented through these links may not necessarily reflect those beliefs held by T-shirts. The inclusion of a link does not mean that T-shirts accept or support any of the content contained on such a site. The user is responsible for protecting it while associating with the connected site. T-shirts disclaim any responsibility or liability for the content contained on such linked sites and will not be held liable for any damages of any kind by those who visit such sites.</p>
+        <h4>Modifications</h4>
+        <p>This web site may contain typographical errors or technical inaccuracies. T-shirts reserves the right to modify the content of this web site at any time without prior notice. T-shirts failure to enforce any section of these terms and conditions shall not be construed as a waiver of such provision.</p>
+        <h4>Severability</h4>
+        <p>If one or more of the provisions contained in these terms and conditions are held to be unenforceable, such provision shall be appropriately limited in its scope. If any such limitation is not feasible, such provision shall be excluded from these terms and conditions and the balance of these terms and conditions shall be enforceable.</p>
+        <h4>Warranties & Limitation of Liability</h4>
+        <p>T-SHIRTS DISCLAIMS ALL WARRANTIES, EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. EXCEPT IN CONNECTION WITH DEATH OR PERSONAL INJURY RESULTING FROM T-SHIRTS NEGLIGENCE, IN NO EVENT SHALL T-SHIRTS BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL, PUNITIVE, CONSEQUENTIAL, OR EXEMPLARY DAMAGES RELATING TO OR ARISING FROM THIS WEB SITE WHETHER OR NOT EITHER PARTY HAD OR SHOULD HAVE HAD ANY KNOWLEDGE, ACTUAL OR CONSTRUCTIVE, THAT SUCH DAMAGES MIGHT BE INCURRED.</p>
+        <h4>Force Majeure</h4>
+        <p>Notwithstanding any other provision set forth in these terms and conditions, T-Shirts shall not be liable for any failure or delay in its performance due to any cause beyond T-shirts reasonable control, including, without limitation, any act of war or civil insurrection, national emergencies, acts of God, fire, explosion, vandalism, storm, earthquake, flood, embargo, riot, sabotage, industry-wide strikes, lockouts, work stoppages or other labor difficulties, industry-wide supplier failures, unavailability of materials, rights of way or governmental acts; provided, however, that T-shirts shall use its commercially reasonable efforts to correct promptly such failure or delay in performance to the extent consistent with then applicable law and regulatory requirements and appropriate in light of then existing circumstances.</p>
+        <h4>Indemnification</h4>
+        <p>User hereby agrees to indemnify, defend, and hold harmless, T-shirts, its officers, directors, affiliates, employees, contractors, subcontractors, agents, partners, and subsidiaries from and against all claims, actions, suits, demands, costs, and damages (including reasonable attorney's fees) asserted by any third party as a result of user's use of this web site in violation of these terms and conditions. T-shirts has the right to control any defense pertaining to this section.</p>
+        <h4>Relationship</h4>
+        <p>Nothing in this Agreement is intended to or shall be construed to constitute or establish an agency, joint venture, partnership, or fiduciary relationship between the parties, and neither party shall have the right or authority to act for or on behalf of the other Party.</p>
+        <h4>Governing Law</h4>
+        <p>These terms and conditions shall be governed by, construed, and enforced in accordance with the laws of the Republic of Moldova, without regard to any choice of law principles.</p>
+        <h4>Jurisdiction</h4>
+        <p>User hereby agrees and irrevocably consents to submit to the exclusive jurisdiction and venue of the courts of the Republic of Moldova for any and all claims arising from the use of this web site.</p>
+        <h4>Entire Agreement</h4>
+        <p>These terms and conditions constitute the full and entire understanding and agreement between the parties pertaining to the subject matter and supersede in their entirety any and all written or oral agreements previously existing between the parties with respect to the subject matter.</p>
+    </div>
+@endsection
