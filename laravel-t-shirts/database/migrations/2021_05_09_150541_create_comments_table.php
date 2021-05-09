@@ -20,11 +20,11 @@ class CreateCommentsTable extends Migration
             $table->date('updated_at');
             $table->boolean('approved')->default(false);
 
-            $table->unsignedBigInteger('users_id');
-            $table->unsignedBigInteger('articles_id');
+            $table->unsignedBigInteger('author_id');
+            $table->unsignedBigInteger('article_id');
 
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('articles_id')->references('id')->on('articles')->onDelete('cascade');
+            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
         });
     }
 

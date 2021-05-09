@@ -26,13 +26,13 @@ class CreateArticlesTable extends Migration
             $table->string('seo_description', 150);
             $table->string('slug')->unique();
 
-            $table->unsignedBigInteger('users_id');
-            $table->unsignedBigInteger('categories_id');
-            $table->unsignedBigInteger('images_id');
+            $table->unsignedBigInteger('author_id');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('image_id');
 
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('categories_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('images_id')->references('id')->on('images')->onDelete('cascade');
+            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
         });
     }
 

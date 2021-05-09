@@ -21,9 +21,9 @@ class CreateGalleriesTable extends Migration
             $table->date('updated_at');
             $table->float('size');
             
-            $table->unsignedBigInteger('articles_id');
+            $table->unsignedBigInteger('article_id');
 
-            $table->foreign('articles_id')->references('id')->on('articles')->onDelete('cascade');
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
         });
     }
 

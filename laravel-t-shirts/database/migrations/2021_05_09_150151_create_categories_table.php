@@ -23,9 +23,9 @@ class CreateCategoriesTable extends Migration
             $table->string('seo_description', 150);
             $table->binary('image');
 
-            $table->unsignedBigInteger('parent_categories_id')->nullable();
+            $table->unsignedBigInteger('parent_category_id')->nullable();
 
-            $table->foreign('parent_categories_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('parent_category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
