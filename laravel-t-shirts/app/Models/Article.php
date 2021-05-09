@@ -12,6 +12,8 @@ class Article extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'name',
         'title',

@@ -10,6 +10,8 @@ class ArticleTag extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function articles(): hasMany
     {
         return $this->hasMany(Article::class, 'id');
