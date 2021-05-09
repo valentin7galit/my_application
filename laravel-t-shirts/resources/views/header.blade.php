@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" id="navbarHamburger">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown" role="button" data-toggle="dropdown">Products</a>
@@ -34,7 +34,7 @@
                     <a class="nav-link" href="./pages/blog.html">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./blocks/contact.html">Contact</a>
+                    <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
                 </li>
             </ul>
         </div>
