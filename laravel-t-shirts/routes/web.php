@@ -9,6 +9,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TermsController;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ use App\Http\Controllers\TermsController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/about-us', [AboutController::class, 'index']);
 
 Route::get('/terms-and-conditions', [TermsController::class, 'index']);
 
