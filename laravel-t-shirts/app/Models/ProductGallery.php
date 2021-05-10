@@ -10,6 +10,8 @@ class ProductGallery extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'path',
         'name',
