@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ArticleTag extends Model
 {
@@ -12,12 +12,12 @@ class ArticleTag extends Model
 
     public $timestamps = false;
 
-    public function articles(): hasMany
+    public function articles(): belongsTo
     {
-        return $this->hasMany(Article::class, 'id', 'article_id');
+        return $this->belongsTo(Article::class, 'article_id');
     }
-    public function tags(): hasMany
+    public function tags(): belongsTo
     {
-        return $this->hasMany(Tag::class, 'id', 'tag_id');
+        return $this->belongsTo(Tag::class, 'tag_id');
     }
 }
