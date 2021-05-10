@@ -28,7 +28,7 @@
                     <a class="nav-link" href="./blocks/about.html">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./blocks/terms_and_conditions.html">Terms and Conditions</a>
+                    <a class="nav-link" href="{{ url('/terms-and-conditions') }}">Terms and Conditions</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/blog') }}">Blog</a>

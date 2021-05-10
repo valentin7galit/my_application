@@ -8,6 +8,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\TermsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,8 @@ use App\Http\Controllers\TagController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/terms-and-conditions', [TermsController::class, 'index']);
 
 Route::get('/blog', [BlogController::class, 'index']);
 Route::get('/blog/article/{id}', [ArticleController::class, 'show']);
