@@ -26,26 +26,26 @@ class Article extends Model
 
     public function tags(): belongsToMany
     {
-        return $this->belongsToMany(Tag::class, 'article_tag');
+        return $this->belongsToMany(Tag::class, 'article_tags', 'article_id', 'tag_id');
     }
     public function comments(): HasMany
     {
-        return $this->hasMany(Comment::class, 'article_id');
+        return $this->hasMany(Comment::class, 'article_id', 'id');
     }
     public function images(): belongsTo
     {
-        return $this->belongsTo(Image::class);
+        return $this->belongsTo(Image::class, 'image_id', 'id');
     }
     public function galleries(): hasMany
     {
-        return $this->hasMany(Gallery::class, 'article_id');
+        return $this->hasMany(Gallery::class, 'article_id', 'id');
     }
     public function categories(): belongsTo
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
-    public function users(): belongsTo
+    public function author(): belongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'author_id', 'id');
     }
 }
