@@ -19,9 +19,9 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->string('short_description');
             $table->text('content');
-            $table->date('created_at');
-            $table->date('modified_at');
-            $table->date('published_at');
+            $table->dateTime('created_at');
+            $table->dateTime('modified_at');
+            $table->dateTime('published_at');
             $table->string('seo_title', 60);
             $table->string('seo_description', 150);
             $table->string('slug')->unique();

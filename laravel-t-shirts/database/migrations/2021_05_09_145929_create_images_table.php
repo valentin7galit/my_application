@@ -17,8 +17,8 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->string('path');
             $table->string('name');
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
             $table->float('size');
         });
     }

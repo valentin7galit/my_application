@@ -24,8 +24,8 @@ class ImageFactory extends Factory
         return [
             'path' => 'article.jpg',
             'name' => $this->faker->name(),
-            'created_at' => $this->faker->date(),
-            'updated_at' => $this->faker->date(),
+            'created_at' => $this->faker->dateTimeThisMonth(),
+            'updated_at' => $this->faker->dateTimeThisMonth(),
             'size' => $this->faker->randomFloat(3, 0, 1000),
         ];
     }

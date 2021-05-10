@@ -16,8 +16,8 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
             $table->string('slug')->unique();
             $table->string('seo_title', 60);
             $table->string('seo_description', 150);

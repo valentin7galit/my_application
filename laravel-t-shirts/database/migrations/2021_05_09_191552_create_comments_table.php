@@ -16,8 +16,8 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('message');
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
             $table->boolean('approved')->default(false);
 
             $table->unsignedBigInteger('author_id');

@@ -14,13 +14,13 @@ class Comment extends Model
         'message',
     ];
 
-    public function users(): belongsTo
+    public function authors(): belongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'author_id');
     }
 
     public function articles(): belongsTo
     {
-        return $this->belongsTo(Article::class);
+        return $this->belongsTo(Article::class, 'article_id');
     }
 }

@@ -23,8 +23,8 @@ class TagFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'created_at' => $this->faker->date(),
-            'updated_at' => $this->faker->date(),
+            'created_at' => $this->faker->dateTimeThisMonth(),
+            'updated_at' => $this->faker->dateTimeThisMonth(),
             'slug' => $this->faker->unique()->name(),
         ];
     }

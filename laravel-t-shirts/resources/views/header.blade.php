@@ -2,7 +2,7 @@
 <div class="container py-3 bg-white">
     <div class="navbar navbar-expand-lg navbar-light p-0">
         <!-- Logo -->
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="{{ url('/') }}">
             <img src="./img/logo.png" class="logo-img" alt="Logo">
             <span class="align-middle">T-shirts</span>
         </a>
@@ -31,7 +31,7 @@
                     <a class="nav-link" href="./blocks/terms_and_conditions.html">Terms and Conditions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./pages/blog.html">Blog</a>
+                    <a class="nav-link" href="{{ url('/blog') }}">Blog</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/contact') }}">Contact</a>

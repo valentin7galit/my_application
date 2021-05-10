@@ -18,6 +18,6 @@ class Gallery extends Model
 
     public function articles(): belongsTo
     {
-        return $this->belongsTo(Article::class);
+        return $this->belongsTo(Article::class, 'article_id');
     }
 }

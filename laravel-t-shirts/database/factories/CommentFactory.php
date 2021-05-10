@@ -23,8 +23,8 @@ class CommentFactory extends Factory
     {
         return [
             'message' => $this->faker->text(150),
-            'created_at' => $this->faker->date(),
-            'updated_at' => $this->faker->date(),
+            'created_at' => $this->faker->dateTimeThisMonth(),
+            'updated_at' => $this->faker->dateTimeThisMonth(),
             'approved' => $this->faker->boolean(),
             'author_id' => rand(1, 20),
             'article_id' => rand(1, 20),

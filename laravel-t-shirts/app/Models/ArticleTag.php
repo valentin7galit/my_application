@@ -14,10 +14,10 @@ class ArticleTag extends Model
 
     public function articles(): hasMany
     {
-        return $this->hasMany(Article::class, 'id');
+        return $this->hasMany(Article::class, 'id', 'article_id');
     }
     public function tags(): hasMany
     {
-        return $this->hasMany(Tag::class, 'id');
+        return $this->hasMany(Tag::class, 'id', 'tag_id');
     }
 }

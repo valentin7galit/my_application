@@ -23,8 +23,8 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => $this->faker->text(15),
-            'created_at' => $this->faker->date(),
-            'updated_at' => $this->faker->date(),
+            'created_at' => $this->faker->dateTimeThisMonth(),
+            'updated_at' => $this->faker->dateTimeThisMonth(),
             'slug' => $this->faker->unique()->name(),
             'seo_title' => $this->faker->title(),
             'seo_description' => $this->faker->text(150),

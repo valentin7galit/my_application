@@ -20,14 +20,14 @@ class Category extends Model
 
     public function articles(): hasMany
     {
-        return $this->hasMany(Article::class, 'category_id');
+        return $this->hasMany(Article::class, 'category_id', 'id');
     }
-    public function categories(): hasMany
+    public function child_categories(): hasMany
     {
-        return $this->hasMany(Category::class, 'parent_category_id');
+        return $this->hasMany(Category::class, 'parent_category_id', 'id');
     }
     public function parent_categories(): belongsTo
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'parent_category_id');
     }
 }

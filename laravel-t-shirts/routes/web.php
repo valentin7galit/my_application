@@ -3,7 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +21,11 @@ use App\Http\Controllers\ContactController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/blog', [BlogController::class, 'index']);
+Route::get('/blog/article/{id}', [ArticleController::class, 'show']);
+Route::get('/blog/category/{id}', [CategoryController::class, 'show']);
+Route::get('/blog/tag/{id}', [TagController::class, 'show']);
 
 Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact', [ContactController::class, 'contact'])->name('contact.send');

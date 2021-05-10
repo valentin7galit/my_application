@@ -26,7 +26,7 @@ class Article extends Model
 
     public function tags(): belongsToMany
     {
-        return $this->belongsToMany(Tag::class, 'article_tags', 'article_id', 'tag_id');
+        return $this->belongsToMany(Tag::class, ArticleTag::class, 'article_id', 'tag_id');
     }
     public function comments(): HasMany
     {
@@ -34,7 +34,7 @@ class Article extends Model
     }
     public function images(): belongsTo
     {
-        return $this->belongsTo(Image::class, 'image_id', 'id');
+        return $this->belongsTo(Image::class, 'image_id');
     }
     public function galleries(): hasMany
     {
@@ -42,10 +42,10 @@ class Article extends Model
     }
     public function categories(): belongsTo
     {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
     public function author(): belongsTo
     {
-        return $this->belongsTo(User::class, 'author_id', 'id');
+        return $this->belongsTo(User::class, 'author_id');
     }
 }
