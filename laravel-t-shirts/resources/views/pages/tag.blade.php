@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container py-3">
+    <div class="container py-3 bg-white">
         <h1 class="py-2">List of Articles with Tag: {{ $tags->name }}</h1>
         <div class="row">
             @foreach ($tags->articles as $article)

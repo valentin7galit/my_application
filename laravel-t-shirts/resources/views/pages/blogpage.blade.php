@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container py-3">
+    <div class="container py-3 bg-white">
         <h1 class="py-2">List of Articles</h1>
         <div class="row">
             <div class="col-12 py-2">

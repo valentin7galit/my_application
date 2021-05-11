@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container py-3">
+    <div class="container py-3 bg-white">
         <h1 class="border-bottom border-secondary py-2">{{ $articles->title }}</h1>
         <div class="row py-2">
             <div class="col-4">

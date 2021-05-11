@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <h1>Kids' T-shirts</h1>
+    <div class="container py-3 bg-white">
+        <h1 class="py-2">Kids' T-shirts</h1>
         <p>Add an easy splash of color into favorite outfits with T-shirts graphic. Merging classic styles and contemporary graphics, our collection includes all. Breathable, lightweight materials offer comfort and freedom, while glitter graphics introduce an additional sense of youthful fun.</p>
     </div>
     <div class="container filter-position py-3 bg-white">
@@ -117,7 +117,7 @@
     <div class="container py-3 bg-white">
         <div class="row">
             @foreach ($products as $product)
-                <div class="col-lg-3 col-6 py-3 filterCol price-15 colour-white size-XS size-S size-M size-L size-XL" data-name="sql" data-price="16.95" data-time="21.04" data-popular="3">
+                <div class="col-lg-3 col-6 py-3 {{-- filterCol price-15 colour-white size-XS size-S size-M size-L size-XL --}}" data-name="sql" data-price="16.95" data-time="21.04" data-popular="3">
                     <a href="/products/{{ $product->id }}">
                         <div class="img-cart">
                             <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">

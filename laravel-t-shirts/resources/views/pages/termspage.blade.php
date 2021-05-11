@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container py-3">
+    <div class="container py-3 bg-white">
         <h1 class="text-center py-2">Terms and Conditions</h1>
         <h4>Acceptance of Terms and Conditions</h4>
         <p>Use of this website is subject to your acceptance of the terms and conditions contained herein. All users of this website understand and agree that their use by this website constitutes acceptance of the terms and conditions set out in this legal notice. T-shirts, reserves the right to change the terms and conditions at any time without notice. If you do not agree to these terms, you may not use this website.</p>
