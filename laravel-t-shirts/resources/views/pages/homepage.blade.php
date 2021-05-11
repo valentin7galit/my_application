@@ -75,290 +75,278 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="row">
-                        <div class="col-lg-3 col-6 py-3" data-popular="3">
-                            <a href="./pages/sing_product.html">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-01.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="./pages/sing_product.html" class="btn btn-secondary btn-block">Add to Cart</a>
+                        @foreach ($populars->slice(0, 2) as $product)
+                            <div class="col-lg-3 col-6 py-3">
+                                <a href="/products/{{ $product->id }}">
+                                    <div class="img-cart">
+                                        <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
+                                        <div class="p-2 block-cart">
+                                            <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="row py-2">
+                                    <div class="col-sm-8 col-7">
+                                        <h5 class="">
+                                            <a href="/products/{{ $product->id }}" class="products-link">{{ $product->name }}</a>
+                                        </h5>
+                                    </div>
+                                    <div class="col-sm-4 col-5">
+                                        <h5 class="text-right">{{ $product->currency }}{{ $product->price }}</h5>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-sm-8 col-7">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">SQL Database</a>
-                                    </h5>
+                                <div class="border-top border-dark">
+                                    <p class="text-secondary m-0 py-2">{{ $product->short_description }}</p>
                                 </div>
-                                <div class="col-sm-4 col-5">
-                                    <h5 class="text-right">$16.95</h5>
-                                </div>
-                            </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Essential T-Shirt, designed by EQDesigns</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">25.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6 py-3 " data-popular="2">
-                            <a href="../">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-02.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="../" class="btn btn-secondary btn-block">Add to Cart</a>
+                                <div class="row">
+                                    <div class="col-sm-7 col-12">
+                                        @if ($product->rating === 1)
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 2)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 3)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 4)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 5)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        @endif
+                                    </div>
+                                    <div class="col-sm-5 col-12">
+                                        <p class="text-secondary font-italic product-text">{{ $product->published_at }}</p>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-sm-8 col-7">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">My Model is ...</a>
-                                    </h5>
-                                </div>
-                                <div class="col-sm-4 col-5">
-                                    <h5 class="text-right">$9.63</h5>
-                                </div>
                             </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Classic T-Shirt, designed by FunnyGrief</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">21.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-none-carousel col-lg-3 col-6 py-3" data-popular="5">
-                            <a href="../">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-03.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="../" class="btn btn-secondary btn-block">Add to Cart</a>
+                        @endforeach
+                        @foreach ($populars->slice(2, 2) as $product)
+                            <div class="product-none-carousel col-lg-3 col-6 py-3">
+                                <a href="/products/{{ $product->id }}">
+                                    <div class="img-cart">
+                                        <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
+                                        <div class="p-2 block-cart">
+                                            <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="row py-2">
+                                    <div class="col-sm-8 col-7">
+                                        <h5 class="">
+                                            <a href="/products/{{ $product->id }}" class="products-link">{{ $product->name }}</a>
+                                        </h5>
+                                    </div>
+                                    <div class="col-sm-4 col-5">
+                                        <h5 class="text-right">{{ $product->currency }}{{ $product->price }}</h5>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-sm-8 col-7">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">Full-Stack Devel.</a>
-                                    </h5>
+                                <div class="border-top border-dark">
+                                    <p class="text-secondary m-0 py-2">{{ $product->short_description }}</p>
                                 </div>
-                                <div class="col-sm-4 col-5">
-                                    <h5 class="text-right">$12.35</h5>
-                                </div>
-                            </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Essential T-Shirt, designed by YourGeekside</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">22.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-none-carousel col-lg-3 col-6 py-3" data-popular="4">
-                            <a href="../">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-04.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="../" class="btn btn-secondary btn-block">Add to Cart</a>
+                                <div class="row">
+                                    <div class="col-sm-7 col-12">
+                                        @if ($product->rating === 1)
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 2)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 3)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 4)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 5)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        @endif
+                                    </div>
+                                    <div class="col-sm-5 col-12">
+                                        <p class="text-secondary font-italic product-text">{{ $product->published_at }}</p>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-sm-8 col-7">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">Don't Worry We'll</a>
-                                    </h5>
-                                </div>
-                                <div class="col-sm-4 col-5">
-                                    <h5 class="text-right">$21.95</h5>
-                                </div>
                             </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Classic T-Shirt, designed by DenisnRour</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">23.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="row">
-                        <div class="col-lg-3 col-6 py-3" data-popular="4">
-                            <a href="../">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-05.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="../" class="btn btn-secondary btn-block">Add to Cart</a>
+                        @foreach ($populars->slice(4, 2) as $product)
+                            <div class="col-lg-3 col-6 py-3">
+                                <a href="/products/{{ $product->id }}">
+                                    <div class="img-cart">
+                                        <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
+                                        <div class="p-2 block-cart">
+                                            <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="row py-2">
+                                    <div class="col-sm-8 col-7">
+                                        <h5 class="">
+                                            <a href="/products/{{ $product->id }}" class="products-link">{{ $product->name }}</a>
+                                        </h5>
+                                    </div>
+                                    <div class="col-sm-4 col-5">
+                                        <h5 class="text-right">{{ $product->currency }}{{ $product->price }}</h5>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-sm-8 col-7">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">Vintage SQL Log</a>
-                                    </h5>
+                                <div class="border-top border-dark">
+                                    <p class="text-secondary m-0 py-2">{{ $product->short_description }}</p>
                                 </div>
-                                <div class="col-sm-4 col-5">
-                                    <h5 class="text-right">$18.95</h5>
-                                </div>
-                            </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Essential T-Shirt, designed by Vladocar</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">19.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6 py-3" data-popular="3">
-                            <a href="../">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-06.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="../" class="btn btn-secondary btn-block">Add to Cart</a>
+                                <div class="row">
+                                    <div class="col-sm-7 col-12">
+                                        @if ($product->rating === 1)
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 2)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 3)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 4)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 5)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        @endif
+                                    </div>
+                                    <div class="col-sm-5 col-12">
+                                        <p class="text-secondary font-italic product-text">{{ $product->published_at }}</p>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-sm-8 col-7">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">I Am A Database</a>
-                                    </h5>
-                                </div>
-                                <div class="col-sm-4 col-5">
-                                    <h5 class="text-right">$10.25</h5>
-                                </div>
                             </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Classic T-Shirt, designed by TKUP22</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">24.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-none-carousel col-lg-3 col-6 py-3" data-popular="4">
-                            <a href="../">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-07.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="../" class="btn btn-secondary btn-block">Add to Cart</a>
+                        @endforeach
+                        @foreach ($populars->slice(6, 2) as $product)
+                            <div class="product-none-carousel col-lg-3 col-6 py-3">
+                                <a href="/products/{{ $product->id }}">
+                                    <div class="img-cart">
+                                        <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
+                                        <div class="p-2 block-cart">
+                                            <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="row py-2">
+                                    <div class="col-sm-8 col-7">
+                                        <h5 class="">
+                                            <a href="/products/{{ $product->id }}" class="products-link">{{ $product->name }}</a>
+                                        </h5>
+                                    </div>
+                                    <div class="col-sm-4 col-5">
+                                        <h5 class="text-right">{{ $product->currency }}{{ $product->price }}</h5>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-sm-8 col-7">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">I U25A1 Unicode</a>
-                                    </h5>
+                                <div class="border-top border-dark">
+                                    <p class="text-secondary m-0 py-2">{{ $product->short_description }}</p>
                                 </div>
-                                <div class="col-sm-4 col-5">
-                                    <h5 class="text-right">$7.72</h5>
-                                </div>
-                            </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Classic T-Shirt, designed by ThomaseSmith</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">20.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-none-carousel col-lg-3 col-6 py-3" data-popular="5">
-                            <a href="../">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-08.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="../" class="btn btn-secondary btn-block">Add to Cart</a>
+                                <div class="row">
+                                    <div class="col-sm-7 col-12">
+                                        @if ($product->rating === 1)
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 2)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 3)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 4)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 5)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        @endif
+                                    </div>
+                                    <div class="col-sm-5 col-12">
+                                        <p class="text-secondary font-italic product-text">{{ $product->published_at }}</p>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-8">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">Database Ninja</a>
-                                    </h5>
-                                </div>
-                                <div class="col-4">
-                                    <h5 class="text-right">$24.15</h5>
-                                </div>
                             </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Graphic T-Shirt, designed by OoyootBespredel</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">24.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div> 
             </div>
@@ -415,290 +403,278 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="row">
-                        <div class="col-lg-3 col-6 py-3" data-time="2021.0425">
-                            <a href="./pages/sing_product.html">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-01.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="./pages/sing_product.html" class="btn btn-secondary btn-block">Add to Cart</a>
+                        @foreach ($recents->slice(0, 2) as $product)
+                            <div class="col-lg-3 col-6 py-3">
+                                <a href="/products/{{ $product->id }}">
+                                    <div class="img-cart">
+                                        <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
+                                        <div class="p-2 block-cart">
+                                            <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="row py-2">
+                                    <div class="col-sm-8 col-7">
+                                        <h5 class="">
+                                            <a href="/products/{{ $product->id }}" class="products-link">{{ $product->name }}</a>
+                                        </h5>
+                                    </div>
+                                    <div class="col-sm-4 col-5">
+                                        <h5 class="text-right">{{ $product->currency }}{{ $product->price }}</h5>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-sm-8 col-7">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">SQL Database</a>
-                                    </h5>
+                                <div class="border-top border-dark">
+                                    <p class="text-secondary m-0 py-2">{{ $product->short_description }}</p>
                                 </div>
-                                <div class="col-sm-4 col-5">
-                                    <h5 class="text-right">$16.95</h5>
-                                </div>
-                            </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Essential T-Shirt, designed by EQDesigns</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">25.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6 py-3 " data-time="2021.0421">
-                            <a href="../">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-02.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="../" class="btn btn-secondary btn-block">Add to Cart</a>
+                                <div class="row">
+                                    <div class="col-sm-7 col-12">
+                                        @if ($product->rating === 1)
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 2)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 3)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 4)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 5)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        @endif
+                                    </div>
+                                    <div class="col-sm-5 col-12">
+                                        <p class="text-secondary font-italic product-text">{{ $product->published_at }}</p>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-sm-8 col-7">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">My Model is ...</a>
-                                    </h5>
-                                </div>
-                                <div class="col-sm-4 col-5">
-                                    <h5 class="text-right">$9.63</h5>
-                                </div>
                             </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Classic T-Shirt, designed by FunnyGrief</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">21.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-none-carousel col-lg-3 col-6 py-3" data-time="2021.0422">
-                            <a href="../">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-03.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="../" class="btn btn-secondary btn-block">Add to Cart</a>
+                        @endforeach
+                        @foreach ($recents->slice(2, 2) as $product)
+                            <div class="product-none-carousel col-lg-3 col-6 py-3">
+                                <a href="/products/{{ $product->id }}">
+                                    <div class="img-cart">
+                                        <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
+                                        <div class="p-2 block-cart">
+                                            <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="row py-2">
+                                    <div class="col-sm-8 col-7">
+                                        <h5 class="">
+                                            <a href="/products/{{ $product->id }}" class="products-link">{{ $product->name }}</a>
+                                        </h5>
+                                    </div>
+                                    <div class="col-sm-4 col-5">
+                                        <h5 class="text-right">{{ $product->currency }}{{ $product->price }}</h5>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-sm-8 col-7">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">Full-Stack Devel.</a>
-                                    </h5>
+                                <div class="border-top border-dark">
+                                    <p class="text-secondary m-0 py-2">{{ $product->short_description }}</p>
                                 </div>
-                                <div class="col-sm-4 col-5">
-                                    <h5 class="text-right">$12.35</h5>
-                                </div>
-                            </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Essential T-Shirt, designed by YourGeekside</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">22.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-none-carousel col-lg-3 col-6 py-3" data-time="2021.0423">
-                            <a href="../">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-04.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="../" class="btn btn-secondary btn-block">Add to Cart</a>
+                                <div class="row">
+                                    <div class="col-sm-7 col-12">
+                                        @if ($product->rating === 1)
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 2)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 3)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 4)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 5)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        @endif
+                                    </div>
+                                    <div class="col-sm-5 col-12">
+                                        <p class="text-secondary font-italic product-text">{{ $product->published_at }}</p>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-sm-8 col-7">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">Don't Worry We'll</a>
-                                    </h5>
-                                </div>
-                                <div class="col-sm-4 col-5">
-                                    <h5 class="text-right">$21.95</h5>
-                                </div>
                             </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Classic T-Shirt, designed by DenisnRour</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">23.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="row">
-                        <div class="col-lg-3 col-6 py-3" data-time="2021.0419">
-                            <a href="../">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-05.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="../" class="btn btn-secondary btn-block">Add to Cart</a>
+                        @foreach ($recents->slice(4, 2) as $product)
+                            <div class="col-lg-3 col-6 py-3">
+                                <a href="/products/{{ $product->id }}">
+                                    <div class="img-cart">
+                                        <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
+                                        <div class="p-2 block-cart">
+                                            <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="row py-2">
+                                    <div class="col-sm-8 col-7">
+                                        <h5 class="">
+                                            <a href="/products/{{ $product->id }}" class="products-link">{{ $product->name }}</a>
+                                        </h5>
+                                    </div>
+                                    <div class="col-sm-4 col-5">
+                                        <h5 class="text-right">{{ $product->currency }}{{ $product->price }}</h5>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-sm-8 col-7">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">Vintage SQL Log</a>
-                                    </h5>
+                                <div class="border-top border-dark">
+                                    <p class="text-secondary m-0 py-2">{{ $product->short_description }}</p>
                                 </div>
-                                <div class="col-sm-4 col-5">
-                                    <h5 class="text-right">$18.95</h5>
-                                </div>
-                            </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Essential T-Shirt, designed by Vladocar</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">19.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6 py-3" data-time="2021.0424">
-                            <a href="../">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-06.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="../" class="btn btn-secondary btn-block">Add to Cart</a>
+                                <div class="row">
+                                    <div class="col-sm-7 col-12">
+                                        @if ($product->rating === 1)
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 2)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 3)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 4)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 5)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        @endif
+                                    </div>
+                                    <div class="col-sm-5 col-12">
+                                        <p class="text-secondary font-italic product-text">{{ $product->published_at }}</p>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-sm-8 col-7">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">I Am A Database</a>
-                                    </h5>
-                                </div>
-                                <div class="col-sm-4 col-5">
-                                    <h5 class="text-right">$10.25</h5>
-                                </div>
                             </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Classic T-Shirt, designed by TKUP22</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">24.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-none-carousel col-lg-3 col-6 py-3" data-time="2021.0420">
-                            <a href="../">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-07.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="../" class="btn btn-secondary btn-block">Add to Cart</a>
+                        @endforeach
+                        @foreach ($recents->slice(6, 2) as $product)
+                            <div class="product-none-carousel col-lg-3 col-6 py-3">
+                                <a href="/products/{{ $product->id }}">
+                                    <div class="img-cart">
+                                        <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
+                                        <div class="p-2 block-cart">
+                                            <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="row py-2">
+                                    <div class="col-sm-8 col-7">
+                                        <h5 class="">
+                                            <a href="/products/{{ $product->id }}" class="products-link">{{ $product->name }}</a>
+                                        </h5>
+                                    </div>
+                                    <div class="col-sm-4 col-5">
+                                        <h5 class="text-right">{{ $product->currency }}{{ $product->price }}</h5>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-sm-8 col-7">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">I U25A1 Unicode</a>
-                                    </h5>
+                                <div class="border-top border-dark">
+                                    <p class="text-secondary m-0 py-2">{{ $product->short_description }}</p>
                                 </div>
-                                <div class="col-sm-4 col-5">
-                                    <h5 class="text-right">$7.72</h5>
-                                </div>
-                            </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Classic T-Shirt, designed by ThomaseSmith</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">20.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-none-carousel col-lg-3 col-6 py-3" data-time="2021.0424">
-                            <a href="../">
-                                <div class="img-cart">
-                                    <img src="./img/products/men-08.jpg" alt="Products" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="../" class="btn btn-secondary btn-block">Add to Cart</a>
+                                <div class="row">
+                                    <div class="col-sm-7 col-12">
+                                        @if ($product->rating === 1)
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 2)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 3)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 4)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                        @if ($product->rating === 5)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        @endif
+                                    </div>
+                                    <div class="col-sm-5 col-12">
+                                        <p class="text-secondary font-italic product-text">{{ $product->published_at }}</p>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-8">
-                                    <h5 class="">
-                                        <a href="../" class="products-link">Database Ninja</a>
-                                    </h5>
-                                </div>
-                                <div class="col-4">
-                                    <h5 class="text-right">$24.15</h5>
-                                </div>
                             </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">Graphic T-Shirt, designed by OoyootBespredel</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">24.04.2021</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div> 
             </div>
@@ -729,7 +705,7 @@
         <h1 class="text-center py-2">Contact</h1>
         <div class="text-center contact-bg-img">
             <h4 class="text-white">Need to get in touch with the team? We're all ears.</h4>
-            <a href="./pages/contact.html" class="btn btn-outline-light">Contact Us</a>
+            <a href="{{ url('/contact') }}" class="btn btn-outline-light">Contact Us</a>
         </div>
     </div>
     <!-- Manufacturers -->

@@ -10,6 +10,10 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TermsController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ProductMenController;
+use App\Http\Controllers\ProductWomanController;
+use App\Http\Controllers\ProductKidController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +27,11 @@ use App\Http\Controllers\AboutController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/products/mens', [ProductMenController::class, 'index']);
+Route::get('/products/women', [ProductWomanController::class, 'index']);
+Route::get('/products/kids', [ProductKidController::class, 'index']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
 
 Route::get('/about-us', [AboutController::class, 'index']);
 

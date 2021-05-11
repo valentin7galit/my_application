@@ -19,9 +19,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown" role="button" data-toggle="dropdown">Products</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown">
-                        <a class="nav-link down-hyperlink" href="./pages/men.html">Men</a>
-                        <a class="nav-link down-hyperlink" href="./pages/women.html">Women</a>
-                        <a class="nav-link down-hyperlink" href="./pages/kids.html">Kids</a>
+                        <a class="nav-link down-hyperlink" href="{{ url('/products/mens') }}">Men's</a>
+                        <a class="nav-link down-hyperlink" href="{{ url('/products/women') }}">Women</a>
+                        <a class="nav-link down-hyperlink" href="{{ url('/products/kids') }}">Kids</a>
                     </div>
                 </li>
                 <li class="nav-item">
