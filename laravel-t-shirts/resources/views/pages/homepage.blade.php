@@ -703,7 +703,7 @@
     <!-- Contact -->
     <div class="container py-3 px-0 bg-white">
         <h1 class="text-center py-2">Contact</h1>
-        <div class="text-center contact-bg-img">
+        <div class="text-center contact-bg-img" style="background-image: url('');">
             <h4 class="text-white">Need to get in touch with the team? We're all ears.</h4>
             <a href="{{ url('/contact') }}" class="btn btn-outline-light">Contact Us</a>
         </div>
