@@ -22,9 +22,9 @@ class LotSizeFactory extends Factory
     public function definition()
     {
         return [
-            'total_stock' => rand(0, 15),
-            'size_id' => rand(1, 10),
-            'product_id' => rand(1, 20),
+            'total_stock' => rand(0, 10),
+            'size_id' => rand(1, 5),
+            'product_id' => rand(1, 40),
         ];
     }
 }

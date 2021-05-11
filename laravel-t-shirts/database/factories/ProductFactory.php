@@ -22,18 +22,18 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'short_description' => $this->faker->text(15),
-            'currency' => $this->faker->text(10),
-            'price' => $this->faker->randomFloat(3, 0, 1000),
+            'name' => $this->faker->text(15),
+            'short_description' => $this->faker->text(50),
+            'currency' => $this->faker->text(5),
+            'price' => $this->faker->randomFloat(3, 5, 25),
             'description' => $this->faker->text(),
             'rating' => rand(1, 5),
             'published_at' => $this->faker->date(),
             'code' => $this->faker->text(10),
             'features' => $this->faker->text(),
             'category_id' => rand(1, 3),
-            'colour_id' => rand(1, 10),
-            'image_id' => rand(1, 20),
+            'colour_id' => rand(1, 8),
+            'image_id' => rand(1, 40),
         ];
     }
 }
