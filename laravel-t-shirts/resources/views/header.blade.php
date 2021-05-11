@@ -3,7 +3,7 @@
     <div class="navbar navbar-expand-lg navbar-light p-0">
         <!-- Logo -->
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="./img/logo.png" class="logo-img" alt="Logo">
+            <img src="{{ asset('img/logo.png') }}" class="logo-img" alt="Logo">
             <span class="align-middle">T-shirts</span>
         </a>
         <!-- Menu Mobile -->

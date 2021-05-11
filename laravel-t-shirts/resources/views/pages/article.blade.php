@@ -10,13 +10,13 @@
         <div class="row py-2">
             <div class="col-4">
                 <i class="fas fa-th-list">
-                    <a href="/blog/category/{{ $articles->categories->id }}">{{ $articles->categories->name }}</a>
+                    <a href="/blog/category/{{ $articles->categories->id }}" class="text-decor link-color">{{ $articles->categories->name }}</a>
                 </i>
             </div>
             <div class="col-8">
                 <i class="fas fa-tags">
                     @foreach ($articles->tags  as $tag)
-                        <a href="/blog/tag/{{ $tag->id }}">{{ $tag->name }}</a>   
+                        <a href="/blog/tag/{{ $tag->id }}" class="text-decor link-color">{{ $tag->name }}</a>   
                     @endforeach
                 </i>
             </div>

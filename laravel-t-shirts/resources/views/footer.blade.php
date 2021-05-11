@@ -3,7 +3,7 @@
     <div class="row bg-secondary py-5">
         <div class="col-lg-3 col-6">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="./img/logo.png" alt="Logo" class="footer-logo">
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" class="footer-logo">
                 <span class="align-middle h3 cl-black">T-shirts</span>
             </a>
         </div>

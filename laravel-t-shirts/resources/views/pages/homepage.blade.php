@@ -15,28 +15,28 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="./img/slider-1.jpg" alt="Slider Men">
+                    <img class="d-block w-100" src="{{ asset('img/slider-1.jpg') }}" alt="Slider Men">
                     <div class="carousel-caption">
                         <h1 class="a">Are you looking for something <span class="text-hidden">new</span> ?</h1>
-                        <a href="./pages/men.html" class="btn btn-outline-light">CLICK HERE</a>
+                        <a href="{{ url('/products/mens') }}" class="btn btn-outline-light">CLICK HERE</a>
                         <!-- Paragraph Null -->
                         <p class="space-down"></p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="./img/slider-2.jpg" alt="Slider Women">
+                    <img class="d-block w-100" src="{{ asset('img/slider-2.jpg') }}" alt="Slider Women">
                     <div class="carousel-caption">
                         <h1>Not sure how to choose ?</h1>
-                        <a href="./pages/women.html" class="btn btn-outline-light">CLICK HERE</a>
+                        <a href="{{ url('/products/women') }}" class="btn btn-outline-light">CLICK HERE</a>
                         <!-- Paragraph Null -->
                         <p class="space-down"></p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="./img/slider-3.jpg" alt="Slider Kids">
+                    <img class="d-block w-100" src="{{ asset('img/slider-3.jpg') }}" alt="Slider Kids">
                     <div class="carousel-caption">
                         <h1>Are you ready for the new year ?</h1>
-                        <a href="./pages/kids.html" class="btn btn-outline-light">CLICK HERE</a>
+                        <a href="{{ url('/products/mens') }}" class="btn btn-outline-light">CLICK HERE</a>
                         <!-- Paragraph Null -->
                         <p class="space-down"></p>
                     </div>
@@ -57,7 +57,7 @@
         <h1 class="text-center py-2">Our Process</h1>
         <div class="row">
             <div class="col-lg-5 col-12">
-                <img class="w-100 process-img" src="./img/process.jpg" alt="Process">
+                <img class="w-100 process-img" src="{{ asset('img/process.jpg') }}" alt="Process">
             </div>
             <div class="col-lg-7 col-12 text-proces">
                 <p>The direct-to-garment printing process operates much like an ink-jet printer you might have at home. DTG prints ink directly onto the t-shirt and can produce full-color images with accuracy.</p>
@@ -703,7 +703,7 @@
     <!-- Contact -->
     <div class="container py-3 px-0 bg-white">
         <h1 class="text-center py-2">Contact</h1>
-        <div class="text-center contact-bg-img" style="background-image: url('');">
+        <div class="text-center contact-bg-img" style="background-image: url('{{ asset('img/contact.jpg') }}');">
             <h4 class="text-white">Need to get in touch with the team? We're all ears.</h4>
             <a href="{{ url('/contact') }}" class="btn btn-outline-light">Contact Us</a>
         </div>
@@ -712,10 +712,10 @@
     <div class="container py-3 bg-white">
         <h1 class="text-center py-2">Our Manufacturers</h1>
         <div class="row">
-            <img src="./img/manufacturers-1.png" alt="Manufacturers 1" class="col-lg-3 col-6 manufactur-img">
-            <img src="./img/manufacturers-2.png" alt="Manufacturers 2" class="col-lg-3 col-6 manufactur-img">
-            <img src="./img/manufacturers-3.png" alt="Manufacturers 3" class="col-lg-3 col-6 manufactur-img">
-            <img src="./img/manufacturers-4.png" alt="Manufacturers 4" class="col-lg-3 col-6 manufactur-img">
+            <img src="{{ asset('img/manufacturers-1.png') }}" alt="Manufacturers 1" class="col-lg-3 col-6 manufactur-img">
+            <img src="{{ asset('img/manufacturers-2.png') }}" alt="Manufacturers 2" class="col-lg-3 col-6 manufactur-img">
+            <img src="{{ asset('img/manufacturers-3.png') }}" alt="Manufacturers 3" class="col-lg-3 col-6 manufactur-img">
+            <img src="{{ asset('img/manufacturers-4.png') }}" alt="Manufacturers 4" class="col-lg-3 col-6 manufactur-img">
         </div>
     </div>
 @endsection
