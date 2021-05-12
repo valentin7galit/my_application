@@ -9,11 +9,11 @@
         <div class="row product-position">
             <div class="col-lg-7">
                 <div class="py-2">
-                    <img src="{{ $products->product_images->path }}" alt="{{ $products->product_images->name }}" class="w-100">
+                    <img src="{{ $products->product_images->path }}" alt="{{ $products->product_images->name }}" class="w-100 img-product-height">
                 </div>
                 @foreach ($products->product_galleries as $product_gallery)
                     <div class="py-2">
-                        <img src="{{ $product_gallery->path }}" alt="{{ $product_gallery->name }}" class="w-100 img-product-secund"> 
+                        <img src="{{ $product_gallery->path }}" alt="{{ $product_gallery->name }}" class="w-100 img-product-height"> 
                     </div>
                 @endforeach
             </div>

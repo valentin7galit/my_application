@@ -8,9 +8,9 @@
     <div class="container py-3 bg-white">
         <h1 class="py-2">List of Articles</h1>
         <div class="row">
-            <div class="col-12 py-2">
-                <div class="row">
-                    @foreach ($articles as $article)
+            @foreach ($articles as $article)
+                <div class="col-12 py-2">
+                    <div class="row">
                         <div class="col-lg-3 col-12">
                             <img src="{{ $article->images->path }}" alt="{{ $article->images->name }}" class="w-100" height="200">
                         </div>
@@ -35,9 +35,9 @@
                             <h5 class="py-2">{{ $article->short_description }}</h5>
                             <p class="text-secondary font-italic">{{ $article->created_at }}</p>
                         </div>
-                    @endforeach
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection

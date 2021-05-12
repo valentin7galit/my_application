@@ -152,6 +152,9 @@
     position: sticky;
     top: 0;
 }
+.img-product-height {
+    height: 650px;
+}
 
 /* Blogs */
 .blog-link {
@@ -212,13 +215,13 @@
     .filter-position {
         position: static;
     }
-    /* Sing Product */
-    .img-product-secund {
-        height: 600px;
-    }
     /*Popular Products*/
     .product-none-carousel {
         display: none;
+    }
+    /* Sing Product */
+    .img-product-height {
+        height: 550px;
     }
     /* Multiple */
     .single-article-img, .process-img, .products-img, .zoom-gallery-img, .gallery-imgs {
@@ -240,6 +243,10 @@
     /* Products */
     .product-text {
         text-align: left;
+    }
+    /* Sing Product */
+    .img-product-height {
+        height: 400px;
     }
 }
 
