@@ -109,5 +109,11 @@
 @endsection
 
 @section('footerScripts')
-    <script src="{{ mix('js/about_gallery.js') }}"></script>
+    <script>
+        function zoomGallery(image) {
+            const imageBlock = document.getElementById("zoom-img");
+            imageBlock.src = image.src;
+            imageBlock.parentElement.style.display = "block";
+        }
+    </script>
 @endsection

@@ -12,9 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .js('resources/js/about_gallery.js', 'public/js')
     .js('resources/js/products_filter.js', 'public/js')
-    .js('resources/js/products_sort.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
