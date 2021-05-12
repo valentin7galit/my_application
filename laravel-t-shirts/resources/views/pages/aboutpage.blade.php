@@ -107,3 +107,7 @@
         </div>
     </div>
 @endsection
+
+@section('footerScripts')
+    <script src="{{ mix('js/about_gallery.js') }}"></script>
+@endsection

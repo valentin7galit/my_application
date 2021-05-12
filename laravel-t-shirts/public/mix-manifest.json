@@ -1,4 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/about_gallery.js": "/js/about_gallery.js",
+    "/js/products_filter.js": "/js/products_filter.js",
+    "/js/products_sort.js": "/js/products_sort.js",
     "/css/app.css": "/css/app.css"
 }
