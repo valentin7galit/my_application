@@ -117,7 +117,7 @@
     <div class="container py-3 bg-white">
         <div class="row">
             @foreach ($products as $product)
-                <div class="col-lg-3 col-6 py-3 {{-- filterCol colour-white size-XS size-S size-M size-L size-XL --}}" data-name="{{ $product->name }}" data-price="{{ $product->price }}" data-time="{{ $product->published_at }}" data-popular="{{ $product->rating }}">
+                <div class="col-lg-3 col-6 py-3 protuct-sort {{-- filterCol colour-white size-XS size-S size-M size-L size-XL --}}" data-name="{{ $product->name }}" data-price="{{ $product->price }}" data-time="{{ $product->published_at }}" data-popular="{{ $product->rating }}">
                     <a href="/products/{{ $product->id }}">
                         <div class="img-cart">
                             <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
