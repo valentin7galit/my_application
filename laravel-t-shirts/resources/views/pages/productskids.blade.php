@@ -26,7 +26,7 @@
                                         <label class="form-check-label" for="a">A - Z</label><br>
                                         <input class="form-check-input" type="radio" name="Name" id="z" onclick="sortZ()">
                                         <label class="form-check-label" for="z">Z - A</label><br>
-                                        <input class="form-check-input" type="radio" name="Name" id="def" onclick="sortDefault()">
+                                        <input class="form-check-input" type="radio" name="Name" id="def" onclick="showDefault()">
                                         <label class="form-check-label" for="def">Default</label>
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@
                                 <a class="nav-link link-sort text-secondary" href="#" onclick="sortHigh()">Price (High to Low)</a>
                                 <a class="nav-link link-sort text-secondary" href="#" onclick="sortTime()">Newest In</a>
                                 <a class="nav-link link-sort text-secondary" href="#" onclick="sortPopular()">Most Popular</a>
-                                <a class="nav-link link-sort text-secondary" href="#" onclick="sortDefault()">Default</a>
+                                <a class="nav-link link-sort text-secondary" href="#" onclick="showDefault()">Default</a>
                             </div>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
     <div class="container py-3 bg-white">
         <div class="row">
             @foreach ($products as $product)
-                <div class="col-lg-3 col-6 py-3 protuct-sort {{-- filterCol colour-white size-XS size-S size-M size-L size-XL --}}" data-name="{{ $product->name }}" data-price="{{ $product->price }}" data-time="{{ $product->published_at }}" data-popular="{{ $product->rating }}">
+                <div class="col-lg-3 col-6 py-3 protuct-sort {{-- filterCol colour-white size-XS size-S size-M size-L size-XL --}}" data-name="{{ $product->name }}" data-price="{{ $product->price }}" data-time="{{ substr($product->published_at, 0, 4)}}{{ substr($product->published_at, 5, 2)}}{{ substr($product->published_at, 8, 2)}}" data-popular="{{ $product->rating }}">
                     <a href="/products/{{ $product->id }}">
                         <div class="img-cart">
                             <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
@@ -241,13 +241,12 @@
             let sortDescend = array.slice().sort((a, b) => b.dataset.popular - a.dataset.popular);
             
             sortDescend.forEach((elem, index) => elem.style.order = index);
-            console.log(sortDescend);
         }
 
-        function sortDefault() {
-            let sortDescend = array;
+        function showDefault() {
+            let showArray = array;
 
-            sortDescend.forEach((elem, index) => elem.style.order = index);
+            showArray.forEach((elem, index) => elem.style.order = index);
         }
     </script>
     <script src="{{ mix('js/products_filter.js') }}"></script>
