@@ -14,6 +14,7 @@ use App\Http\Controllers\ProductMenController;
 use App\Http\Controllers\ProductWomanController;
 use App\Http\Controllers\ProductKidController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,4 +44,7 @@ Route::get('/blog/category/{id}', [CategoryController::class, 'show']);
 Route::get('/blog/tag/{id}', [TagController::class, 'show']);
 
 Route::get('/contact', [ContactController::class, 'index']);
-Route::post('/contact', [ContactController::class, '__invoke'])->name('mailhog');
+Route::post('/contact', [ContactController::class, 'contact'])->name('contact.send');
+
+
+Route::get('/test', [TestController::class, '__invoke']);
