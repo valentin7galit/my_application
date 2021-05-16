@@ -1,4 +1,3 @@
-#!/bin/bash
 docker run -d --name mailhog \
            -p 8025:8025 \
            --net laravel_t_shirts_network \
