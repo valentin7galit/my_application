@@ -117,7 +117,7 @@
     <div class="container py-3 bg-white">
         <div class="row">
             @foreach ($products as $product)
-                <div class="col-lg-3 col-6 py-3 protuct-sort {{-- filterCol colour-white size-XS size-S size-M size-L size-XL --}}" data-name="{{ $product->name }}" data-price="{{ $product->price }}" data-time="{{ substr($product->published_at, 0, 4)}}{{ substr($product->published_at, 5, 2)}}{{ substr($product->published_at, 8, 2)}}" data-popular="{{ $product->rating }}">
+                <div class="col-lg-3 col-6 py-3 protuct-sort protuct-filter price-{{ $product->price }}" data-name="{{ $product->name }}" data-price="{{ $product->price }}" data-time="{{ substr($product->published_at, 0, 4)}}{{ substr($product->published_at, 5, 2)}}{{ substr($product->published_at, 8, 2)}}" data-popular="{{ $product->rating }}">
                     <a href="/products/{{ $product->id }}">
                         <div class="img-cart">
                             <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
@@ -189,65 +189,43 @@
 
 @section('footerScripts')
     <script type="text/javascript">
-        const array = [...document.getElementsByClassName('protuct-sort')];
+        filterProduct("all");
 
-        function sortA() {
-            let sortAscend = array.slice().sort((a, b) => {
-                if (a.dataset.name < b.dataset.name) {
-                    return -1;
+        function filterProduct(name) {
+            const x = document.getElementsByClassName("protuct-filter");
+            
+            if (name == "all") {
+                name = "";
+            }
+            for (let i = 0; i < x.length; i++) {
+                removeProduct(x[i], "show");
+                if (x[i].className.indexOf(name) > -1) {
+                    addProduct(x[i], "show");
                 }
-                if (b.dataset.name < a.dataset.name) {
-                    return 1;
+        }
+        }
+
+        function addProduct(element, name) {
+            let arr1 = element.className.split(" ");
+            let arr2 = name.split(" ");
+            
+            for (let i = 0; i < arr2.length; i++) {
+                if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+            }
+        }
+
+        function removeProduct(element, name) {
+            let arr1 = element.className.split(" ");
+            let arr2 = name.split(" ");
+            
+            for (let i = 0; i < arr2.length; i++) {
+                while (arr1.indexOf(arr2[i]) > -1) {
+                arr1.splice(arr1.indexOf(arr2[i]), 1);     
                 }
-                return 0;
-            });
+            }
             
-            sortAscend.forEach((elem, index) => elem.style.order = index);
-        }
-
-        function sortZ() {
-            let sortDescend = array.slice().sort((a, b) => {
-                if (a.dataset.name > b.dataset.name) {
-                    return -1;
-                }
-                if (b.dataset.name > a.dataset.name) {
-                    return 1;
-                }
-                return 0;
-            });
-
-            sortDescend.forEach((elem, index) => elem.style.order = index);
-        }
-
-        function sortLow() {
-            let sortAscend = array.slice().sort((a, b) => a.dataset.price - b.dataset.price);
-            
-            sortAscend.forEach((elem, index) => elem.style.order = index);
-        }
-
-        function sortHigh() {
-            let sortDescend = array.slice().sort((a, b) => b.dataset.price - a.dataset.price);
-            
-            sortDescend.forEach((elem, index) => elem.style.order = index);
-        }
-
-        function sortTime() {
-            let sortDescend = array.slice().sort((a, b) => b.dataset.time - a.dataset.time);
-            
-            sortDescend.forEach((elem, index) => elem.style.order = index);
-        }
-
-        function sortPopular() {
-            let sortDescend = array.slice().sort((a, b) => b.dataset.popular - a.dataset.popular);
-            
-            sortDescend.forEach((elem, index) => elem.style.order = index);
-        }
-
-        function showDefault() {
-            let showArray = array;
-
-            showArray.forEach((elem, index) => elem.style.order = index);
+            element.className = arr1.join(" ");
         }
     </script>
-    <script src="{{ mix('js/products_filter.js') }}"></script>
+    <script src="{{ mix('js/productsort.js') }}"></script>
 @endsection
