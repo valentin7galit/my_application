@@ -37,13 +37,13 @@
                                     <div class="pl-4 form-check">
                                         <input class="form-check-input" type="radio" name="Price" id="all" onclick="filterProduct('all')" checked>
                                         <label class="form-check-label" for="all">Show All</label><br>
-                                        <input class="form-check-input" type="radio" name="Price" id="0" onclick="filterProduct('price-0'); sortLow();">
-                                        <label class="form-check-label" for="0">0$ - 10$</label><br>
                                         <input class="form-check-input" type="radio" name="Price" id="10" onclick="filterProduct('price-10'); sortLow();">
+                                        <label class="form-check-label" for="10">5$ - 10$</label><br>
+                                        <input class="form-check-input" type="radio" name="Price" id="15" onclick="filterProduct('price-15'); sortLow();">
                                         <label class="form-check-label" for="15">10$ - 15$</label><br>
-                                        <input class="form-check-input" type="radio" name="Price" id="20" onclick="filterProduct('price-15'); sortLow();">
+                                        <input class="form-check-input" type="radio" name="Price" id="20" onclick="filterProduct('price-20'); sortLow();">
                                         <label class="form-check-label" for="20">15$ - 20$</label><br>
-                                        <input class="form-check-input" type="radio" name="Price" id="30" onclick="filterProduct('price-20'); sortLow();">
+                                        <input class="form-check-input" type="radio" name="Price" id="25" onclick="filterProduct('price-25'); sortLow();">
                                         <label class="form-check-label" for="25">20$ - 25$</label>
                                     </div>
                                 </div>
@@ -73,21 +73,21 @@
                                     <div class="pl-4 form-check">
                                         <input class="form-check-input" type="radio" name="Colour" id="all" onclick="filterProduct('all')" checked>
                                         <label class="form-check-label" for="call">Show All</label><br>
-                                        <input class="form-check-input" type="radio" name="Colour" id="black" onclick="filterProduct('colour-black')">
+                                        <input class="form-check-input" type="radio" name="Colour" id="black" onclick="filterProduct('colour-Black')">
                                         <label class="form-check-label" for="black">Black</label><br>
-                                        <input class="form-check-input" type="radio" name="Colour" id="gray" onclick="filterProduct('colour-gray')">
+                                        <input class="form-check-input" type="radio" name="Colour" id="gray" onclick="filterProduct('colour-Gray')">
                                         <label class="form-check-label" for="gray">Gray</label><br>
-                                        <input class="form-check-input" type="radio" name="Colour" id="blue" onclick="filterProduct('colour-blue')">
+                                        <input class="form-check-input" type="radio" name="Colour" id="blue" onclick="filterProduct('colour-Blue')">
                                         <label class="form-check-label" for="blue">Blue</label><br>
-                                        <input class="form-check-input" type="radio" name="Colour" id="green" onclick="filterProduct('colour-green')">
+                                        <input class="form-check-input" type="radio" name="Colour" id="green" onclick="filterProduct('colour-Green')">
                                         <label class="form-check-label" for="green">Green</label><br>
-                                        <input class="form-check-input" type="radio" name="Colour" id="yellow" onclick="filterProduct('colour-yellow')">
+                                        <input class="form-check-input" type="radio" name="Colour" id="yellow" onclick="filterProduct('colour-Yellow')">
                                         <label class="form-check-label" for="yellow">Yellow</label><br>
-                                        <input class="form-check-input" type="radio" name="Colour" id="red" onclick="filterProduct('colour-red')">
+                                        <input class="form-check-input" type="radio" name="Colour" id="red" onclick="filterProduct('colour-Red')">
                                         <label class="form-check-label" for="red">Red</label><br>
-                                        <input class="form-check-input" type="radio" name="Colour" id="white" onclick="filterProduct('colour-white')">
+                                        <input class="form-check-input" type="radio" name="Colour" id="white" onclick="filterProduct('colour-White')">
                                         <label class="form-check-label" for="white">White</label><br>
-                                        <input class="form-check-input" type="radio" name="Colour" id="multicoloured" onclick="filterProduct('colour-multi-colored')">
+                                        <input class="form-check-input" type="radio" name="Colour" id="multicoloured" onclick="filterProduct('colour-Multi-Colored')">
                                         <label class="form-check-label" for="multicoloured">Multi-Colored</label>
                                     </div>
                                 </div>
@@ -117,76 +117,115 @@
     <div class="container py-3 bg-white">
         <div class="row">
             @foreach ($products as $product)
-                <div class="col-lg-3 col-6 py-3 protuct-sort {{-- filterCol colour-white size-XS size-S size-M size-L size-XL --}}" data-name="{{ $product->name }}" data-price="{{ $product->price }}" data-time="{{ substr($product->published_at, 0, 4)}}{{ substr($product->published_at, 5, 2)}}{{ substr($product->published_at, 8, 2)}}" data-popular="{{ $product->rating }}">
-                    <a href="/products/{{ $product->id }}">
-                        <div class="img-cart">
-                            <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
-                            <div class="p-2 block-cart">
-                                <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
+                @foreach ($prices as $price)
+                    @if ($product->id === $price->id)
+                        <div class="col-lg-3 col-6 py-3 protuct-sort protuct-filter price-{{ $price->price < 10 ? $price->price = 10 : ($price->price > 10 && $price->price < 15 ? $price->price = 15 : ($price->price > 15 && $price->price < 20 ? $price->price = 20 : $price->price = 25)) }} colour-{{ $product->colours->name }}" data-name="{{ $product->name }}" data-price="{{ $product->price }}" data-time="{{ substr($product->published_at, 0, 4)}}{{ substr($product->published_at, 5, 2)}}{{ substr($product->published_at, 8, 2)}}" data-popular="{{ $product->rating }}">
+                            <a href="/products/{{ $product->id }}">
+                                <div class="img-cart">
+                                    <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
+                                    <div class="p-2 block-cart">
+                                        <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="row py-2">
+                                <div class="col-sm-8 col-7">
+                                    <h5 class="">
+                                        <a href="/products/{{ $product->id }}" class="products-link">{{ $product->name }}</a>
+                                    </h5>
+                                </div>
+                                <div class="col-sm-4 col-5">
+                                    <h5 class="text-right">{{ $product->currency }}{{ $product->price }}</h5>
+                                </div>
+                            </div>
+                            <div class="border-top border-dark">
+                                <p class="text-secondary m-0 py-2">{{ $product->short_description }}</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-7 col-12">
+                                    @if ($product->rating === 1)
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    @endif
+                                    @if ($product->rating === 2)
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    @endif
+                                    @if ($product->rating === 3)
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    @endif
+                                    @if ($product->rating === 4)
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    @endif
+                                    @if ($product->rating === 5)
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    @endif
+                                </div>
+                                <div class="col-sm-5 col-12">
+                                    <p class="text-secondary font-italic product-text">{{ $product->published_at }}</p>
+                                </div>
                             </div>
                         </div>
-                    </a>
-                    <div class="row py-2">
-                        <div class="col-sm-8 col-7">
-                            <h5 class="">
-                                <a href="/products/{{ $product->id }}" class="products-link">{{ $product->name }}</a>
-                            </h5>
-                        </div>
-                        <div class="col-sm-4 col-5">
-                            <h5 class="text-right">{{ $product->currency }}{{ $product->price }}</h5>
-                        </div>
-                    </div>
-                    <div class="border-top border-dark">
-                        <p class="text-secondary m-0 py-2">{{ $product->short_description }}</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-7 col-12">
-                            @if ($product->rating === 1)
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            @endif
-                            @if ($product->rating === 2)
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            @endif
-                            @if ($product->rating === 3)
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            @endif
-                            @if ($product->rating === 4)
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                            @endif
-                            @if ($product->rating === 5)
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            @endif
-                        </div>
-                        <div class="col-sm-5 col-12">
-                            <p class="text-secondary font-italic product-text">{{ $product->published_at }}</p>
-                        </div>
-                    </div>
-                </div>
+                    @endif
+                @endforeach
             @endforeach
         </div>
     </div>
 @endsection
 
 @section('footerScripts')
+    <script type="text/javascript">
+        filterProduct("all");
+
+        function filterProduct(name) {
+            const x = document.getElementsByClassName("protuct-filter");
+            if (name == "all") {
+                name = "";
+            }
+            for (let i = 0; i < x.length; i++) {
+                removeProduct(x[i], "show");
+                if (x[i].className.indexOf(name) > -1) {
+                    addProduct(x[i], "show");
+                }
+        }
+        }
+
+        function addProduct(element, name) {
+            let arr1 = element.className.split(" ");
+            let arr2 = name.split(" ");
+            for (let i = 0; i < arr2.length; i++) {
+                if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+            }
+        }
+
+        function removeProduct(element, name) {
+            let arr1 = element.className.split(" ");
+            let arr2 = name.split(" ");
+            for (let i = 0; i < arr2.length; i++) {
+                while (arr1.indexOf(arr2[i]) > -1) {
+                arr1.splice(arr1.indexOf(arr2[i]), 1);     
+                }
+            }
+            element.className = arr1.join(" ");
+        }
+    </script>
     <script src="{{ mix('js/productsort.js') }}"></script>
 @endsection
