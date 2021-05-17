@@ -10,11 +10,13 @@ class ProductMenController extends Controller
     public function index()
     {
         $products = Product::where('category_id', '=', 1)
-            ->with('product_images')
+            ->with('product_images', 'colours')
             ->get();
+        $prices = Product::where('category_id', '=', 1)->get();
         
         return view('pages.productsmens', [
-            'products' => $products
+            'products' => $products,
+            'prices' => $prices
         ]);
     }
 }
