@@ -10,7 +10,7 @@ class ProductMenController extends Controller
     public function index()
     {
         $products = Product::where('category_id', '=', 1)
-            ->with('product_images', 'colours')
+            ->with('product_images', 'colours', 'sizes', 'lot_sizes')
             ->get();
         $prices = Product::where('category_id', '=', 1)->get();
         
