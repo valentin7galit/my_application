@@ -119,71 +119,77 @@
             @foreach ($products as $product)
                 @foreach ($prices as $price)
                     @if ($product->id === $price->id)
-                        <div class="col-lg-3 col-6 py-3 protuct-sort protuct-filter price-{{ $price->price < 10 ? $price->price = 10 : ($price->price > 10 && $price->price < 15 ? $price->price = 15 : ($price->price > 15 && $price->price < 20 ? $price->price = 20 : $price->price = 25)) }} colour-{{ $product->colours->name }}" data-name="{{ $product->name }}" data-price="{{ $product->price }}" data-time="{{ substr($product->published_at, 0, 4)}}{{ substr($product->published_at, 5, 2)}}{{ substr($product->published_at, 8, 2)}}" data-popular="{{ $product->rating }}">
-                            <a href="/products/{{ $product->id }}">
-                                <div class="img-cart">
-                                    <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
-                                    <div class="p-2 block-cart">
-                                        <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
+                        @foreach ($product->lot_sizes as $lot_size)
+                            @if ($lot_size->total_stock !== 0)
+                                @if ($loop->first)
+                                    <div class="col-lg-3 col-6 py-3 protuct-sort protuct-filter @foreach ($product->sizes->slice(0, 1) as $size) size-{{ $size->name }} @endforeach @foreach ($product->sizes->slice(1, 1) as $size) size-{{ $size->name }} @endforeach @foreach ($product->sizes->slice(2, 1) as $size) size-{{ $size->name }} @endforeach @foreach ($product->sizes->slice(3, 1) as $size) size-{{ $size->name }} @endforeach @foreach ($product->sizes->slice(4, 1) as $size) size-{{ $size->name }} @endforeach price-{{ $price->price < 10 ? $price->price = 10 : ($price->price > 10 && $price->price < 15 ? $price->price = 15 : ($price->price > 15 && $price->price < 20 ? $price->price = 20 : $price->price = 25)) }} colour-{{ $product->colours->name }}" data-name="{{ $product->name }}" data-price="{{ $product->price }}" data-time="{{ substr($product->published_at, 0, 4)}}{{ substr($product->published_at, 5, 2)}}{{ substr($product->published_at, 8, 2)}}" data-popular="{{ $product->rating }}">
+                                        <a href="/products/{{ $product->id }}">
+                                            <div class="img-cart">
+                                                <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
+                                                <div class="p-2 block-cart">
+                                                    <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="row py-2">
+                                            <div class="col-sm-8 col-7">    
+                                                <h5 class="">
+                                                    <a href="/products/{{ $product->id }}" class="products-link">{{ $product->name }}</a>
+                                                </h5>
+                                            </div>
+                                            <div class="col-sm-4 col-5">
+                                                <h5 class="text-right">{{ $product->currency }}{{ $product->price }}</h5>
+                                            </div>
+                                        </div>
+                                        <div class="border-top border-dark">
+                                            <p class="text-secondary m-0 py-2">{{ $product->short_description }}</p>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-7 col-12">
+                                                @if ($product->rating === 1)
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                @endif
+                                                @if ($product->rating === 2)
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                @endif
+                                                @if ($product->rating === 3)
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                @endif
+                                                @if ($product->rating === 4)
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                @endif
+                                                @if ($product->rating === 5)
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                @endif
+                                            </div>
+                                            <div class="col-sm-5 col-12">
+                                                <p class="text-secondary font-italic product-text">{{ $product->published_at }}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                            <div class="row py-2">
-                                <div class="col-sm-8 col-7">
-                                    <h5 class="">
-                                        <a href="/products/{{ $product->id }}" class="products-link">{{ $product->name }}</a>
-                                    </h5>
-                                </div>
-                                <div class="col-sm-4 col-5">
-                                    <h5 class="text-right">{{ $product->currency }}{{ $product->price }}</h5>
-                                </div>
-                            </div>
-                            <div class="border-top border-dark">
-                                <p class="text-secondary m-0 py-2">{{ $product->short_description }}</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    @if ($product->rating === 1)
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    @endif
-                                    @if ($product->rating === 2)
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    @endif
-                                    @if ($product->rating === 3)
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    @endif
-                                    @if ($product->rating === 4)
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    @endif
-                                    @if ($product->rating === 5)
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    @endif
-                                </div>
-                                <div class="col-sm-5 col-12">
-                                    <p class="text-secondary font-italic product-text">{{ $product->published_at }}</p>
-                                </div>
-                            </div>
-                        </div>
+                                @endif
+                            @endif
+                        @endforeach
                     @endif
                 @endforeach
             @endforeach
