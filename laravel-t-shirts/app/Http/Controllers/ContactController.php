@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
-use Illuminate\Contracts\Mail\Mailer;
+use App\Services\ContactMailer;
 
 class ContactController extends Controller
 {
@@ -13,24 +13,16 @@ class ContactController extends Controller
         return view('pages.contactpage');
     }
 
-    private Mailer $mailer;
+    private ContactMailer $mailer;
 
-    public function __construct(Mailer $mailer)
+    public function __construct(ContactMailer $mailer)
     {
         $this->mailer = $mailer;
     }
 
     public function __invoke(Request $request)
     {
-        $this->mailer->send(
-            'emails.email',
-            ['name' => $request->input('name'), 'content' => $request->input('content'), 'email' => $request->input('email')],
-            function (Message $message) use($request)
-            {
-                $message->to('valentin@t-shirts.com');
-                $message->subject($request->input('subject'));
-            }
-        );
+        $this->mailer->send($request->all());
 
         return redirect('contact');
     }
