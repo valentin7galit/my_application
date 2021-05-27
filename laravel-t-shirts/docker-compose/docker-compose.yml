@@ -26,7 +26,7 @@ services:
       - "/home/valentin/Internship_Development-Aid/My_Application/application/laravel-t-shirts:/var/www/html"
     environment:
       - APP_URL=http://localhost
-      - MAIL_HOST=mailhog
+      - MAIL_HOST=laravel-t-shirts-mailhog
       - MAIL_USERNAME=null
       - MAIL_PASSWORD=null
       - MAIL_ENCRYPTION=null
