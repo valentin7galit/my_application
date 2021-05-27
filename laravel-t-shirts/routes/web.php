@@ -14,7 +14,7 @@ use App\Http\Controllers\ProductMenController;
 use App\Http\Controllers\ProductWomanController;
 use App\Http\Controllers\ProductKidController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\TestController;
+use App\Http\Middleware\RequestLoggingMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,8 +43,7 @@ Route::get('/blog/article/{id}', [ArticleController::class, 'show']);
 Route::get('/blog/category/{id}', [CategoryController::class, 'show']);
 Route::get('/blog/tag/{id}', [TagController::class, 'show']);
 
-Route::get('/contact', [ContactController::class, 'index']);
-Route::post('/contact', [ContactController::class, 'contact'])->name('contact.send');
-
-
-Route::get('/test', [TestController::class, '__invoke']);
+Route::get('/contact', ['users', function () {
+    return view('pages.contactpage');
+}, 'middleware' => RequestLoggingMiddleware::class]);
+Route::post('/contact', [ContactController::class, '__invoke'])->name('mailhog');

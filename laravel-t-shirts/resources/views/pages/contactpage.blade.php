@@ -13,7 +13,7 @@
         <h1 class="text-center py-2">Contact Us</h1>
         <div class="row py-2">
             <div class="col-md-6 col-12 py-2">
-                <form action="{{ route('contact.send') }}" method="post">
+                <form action="{{ route('mailhog') }}" method="post">
                     @csrf
                     <div class="form-group row">
                         <div class="col-6">
@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <input type="text" class="form-control w-100" placeholder="Subject" name="subject"><br>
-                    <textarea name="message" rows="4" cols="35" placeholder="Message" class="form-control w-100"></textarea><br>
+                    <textarea name="content" rows="4" cols="35" placeholder="Message" class="form-control w-100"></textarea><br>
                     <!-- reCAPTCHA -->
                     <div class="g-recaptcha" data-sitekey="6Lei-swaAAAAANU8-q-TIA9aIpnJRJEjyHLQvXTs"></div><br>
                     <button type="submit" class="btn btn-secondary btn-block">Submit</button>

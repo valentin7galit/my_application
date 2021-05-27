@@ -46,4 +46,8 @@ class Product extends Model
     {
         return $this->hasMany(ProductGallery::class, 'product_id', 'id');
     }
+    public function lot_sizes(): hasMany
+    {
+        return $this->hasMany(LotSize::class, 'product_id', 'id');
+    }
 }

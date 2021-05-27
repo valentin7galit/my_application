@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Mail\Message;
+use App\Services\ContactMailer;
 
 class ContactController extends Controller
 {
@@ -11,8 +13,17 @@ class ContactController extends Controller
         return view('pages.contactpage');
     }
 
-    public function contact(Request $request)
+    private ContactMailer $mailer;
+
+    public function __construct(ContactMailer $mailer)
     {
-        dd($request->input());
+        $this->mailer = $mailer;
+    }
+
+    public function __invoke(Request $request)
+    {
+        $this->mailer->send($request->all());
+
+        return redirect('contact');
     }
 }
