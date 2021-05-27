@@ -10,11 +10,13 @@ class ProductKidController extends Controller
     public function index()
     {
         $products = Product::where('category_id', '=', 3)
-            ->with('product_images')
+            ->with('product_images', 'colours', 'sizes', 'lot_sizes')
             ->get();
+        $prices = Product::where('category_id', '=', 3)->get();
         
         return view('pages.productskids', [
-            'products' => $products
+            'products' => $products,
+            'prices' => $prices
         ]);
     }
 }
