@@ -18,4 +18,16 @@ class BlogController extends Controller
             'articles' => $articles
         ]);
     }
+
+    /* Controller API */
+
+    public function indexApi()
+    {
+        return Article::all();
+    }
+
+    public function storeApi(Request $request)
+    {
+        return Article::create($request->all());
+    }
 }
