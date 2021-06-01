@@ -16,14 +16,4 @@ class CategoryController extends Controller
             'categories' => $categories
         ]);
     }
-
-    /* Controller API */
-
-    public function showApi($id)
-    {
-        $categories = Category::with('articles')
-            ->findOrFail($id);
-        
-        return $categories;
-    }
 }

@@ -19,13 +19,4 @@ class ProductMenController extends Controller
             'prices' => $prices
         ]);
     }
-
-    /* Controller API */
-
-    public function indexApi()
-    {
-        $products = Product::where('category_id', '=', 1)->get();
-        
-        return $products;
-    }
 }

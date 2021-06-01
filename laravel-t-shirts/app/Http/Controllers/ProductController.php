@@ -16,27 +16,4 @@ class ProductController extends Controller
             'products' => $products
         ]);
     }
-
-    /* Controller API */
-
-    public function showApi($id)
-    {
-        return Product::find($id);
-    }
-
-    public function updateApi(Request $request, $id)
-    {
-        $products = Product::findOrFail($id);
-        $products->update($request->all());
-
-        return $products;
-    }
-
-    public function deleteApi(Request $request, $id)
-    {
-        $products = Product::findOrFail($id);
-        $products->delete();
-
-        return 204;
-    }
 }

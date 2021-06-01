@@ -19,13 +19,4 @@ class ProductWomanController extends Controller
             'prices' => $prices
         ]);
     }
-
-    /* Controller API */
-
-    public function indexApi()
-    {
-        $products = Product::where('category_id', '=', 2)->get();
-        
-        return $products;
-    }
 }

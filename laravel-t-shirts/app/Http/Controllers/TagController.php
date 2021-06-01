@@ -16,14 +16,4 @@ class TagController extends Controller
             'tags' => $tags
         ]);
     }
-
-    /* Controller API */
-
-    public function showApi($id)
-    {
-        $tags = Tag::with('articles')
-            ->findOrFail($id);
-        
-        return $tags;
-    }
 }
