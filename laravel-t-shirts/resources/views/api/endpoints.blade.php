@@ -340,7 +340,7 @@
                 <p class="p-2">/products/images/all</p>
             </div>
             <div class="col-3">
-                <p class="p-2">Get list of image</p>
+                <p class="p-2">Get list of images</p>
             </div>
         </div>
         <div class="row">
@@ -363,7 +363,7 @@
                 <p class="p-2">/products/sizes/all</p>
             </div>
             <div class="col-3">
-                <p class="p-2">Get list of image</p>
+                <p class="p-2">Get list of sizes</p>
             </div>
         </div>
         <div class="row">
