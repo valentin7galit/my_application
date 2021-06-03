@@ -50,6 +50,7 @@ services:
       - "8025:8025"
     networks:
       - laravel_t_shirts_network
+    restart: unless-stopped
 
 networks:
   laravel_t_shirts_network:
