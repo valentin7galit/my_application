@@ -8,7 +8,7 @@ class IPAddressRequestLogger extends AbstractRequestLogger
 {
     protected function getMessage(): string
     {
-        return 'This is IP Address';
+        return 'This is IP address';
     }
 
     protected function extractRequestData(Request $request): array
