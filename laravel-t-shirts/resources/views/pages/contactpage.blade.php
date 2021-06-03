@@ -13,7 +13,7 @@
         <h1 class="text-center py-2">Contact Us</h1>
         <div class="row py-2">
             <div class="col-md-6 col-12 py-2">
-                <form action="{{ route('mailhog') }}" method="post">
+                <form action="{{ route('contact-form') }}" method="post">
                     @csrf
                     <div class="form-group row">
                         <div class="col-6">
