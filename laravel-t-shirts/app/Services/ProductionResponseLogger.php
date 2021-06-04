@@ -10,9 +10,4 @@ class ProductionResponseLogger extends AbstractResponseLogger
     {
         return [];
     }
-
-    protected function handleFinishedRequestEvent(Response $response): void
-    {
-
-    }
 }
