@@ -8,7 +8,7 @@ class BrowserRequestLogger extends AbstractRequestLogger
 {
     protected function getMessage(): string
     {
-        return 'This is User Agent';
+        return 'This is a web browser user agent';
     }
 
     protected function extractRequestData(Request $request): array
@@ -43,6 +43,10 @@ class BrowserRequestLogger extends AbstractRequestLogger
        
         $browserLang = preg_replace('/(,\w+.+)/i', '', $request->server('HTTP_ACCEPT_LANGUAGE'));
 
-        return [$osName, $browserName, $browserLang];
+        return [
+            'Operating System' => $osName, 
+            'Browser Platform' => $browserName, 
+            'Browser Language' => $browserLang,
+        ];
     }
 }
