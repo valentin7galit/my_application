@@ -1,0 +1,1053 @@
+openapi: 3.0.1
+info:
+  title: Swagger T-shirts - change all the specification
+  description: |-
+    This is a sample server T-shirts server.  You can find out more about Swagger
+    at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For
+    this sample, you can use the api key `special-key` to test the authorization filters.
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:88/api/
+tags:
+  - name: blog
+    description: Everything about your Articles
+  - name: product
+    description: Access to Products
+paths:
+  /blog:
+    get:
+      tags:
+        - blog
+      summary: Get list of articles
+      description: Multiple status values can be provided with comma separated strings
+      operationId: findBlogsByStatus
+      parameters:
+        - name: status
+          in: query
+          description: Status values that need to be considered for filter
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+              default: available
+              enum:
+                - available
+                - pending
+                - sold
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Article'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Article'
+        400:
+          description: Invalid status value
+          content: {}
+      x-codegen-request-body-name: body
+    post:
+      tags:
+        - blog
+      summary: Add a new article to the list
+      operationId: addArticle
+      requestBody:
+        description: Article object that needs to be added to the blog
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Article'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Article'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /blog/articles/{id}:
+    get:
+      tags:
+        - blog
+      summary: Find article by ID
+      description: Returns a single article
+      operationId: getArticleById
+      parameters:
+        - name: articleId
+          in: path
+          description: ID of article to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Article'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Article not found
+          content: {}
+      security:
+        - api_key: []
+    put:
+      tags:
+        - blog
+      summary: Update an existing article
+      operationId: updateArticle
+      requestBody:
+        description: Article object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Article'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Article'
+        required: true
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Article not found
+          content: {}
+        405:
+          description: Validation exception
+          content: {}
+    delete:
+      tags:
+        - blog
+      summary: Delete a article
+      operationId: deleteArticle
+      parameters:
+        - name: api_key
+          in: header
+          schema:
+            type: string
+        - name: articleId
+          in: path
+          description: Article id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Article not found
+          content: {}
+  /blog/authors/{id}:
+    get:
+      tags:
+        - blog
+      summary: Find author by ID
+      description: Returns a single author
+      operationId: getAuthorById
+      parameters:
+        - name: authorId
+          in: path
+          description: ID of author to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Author'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Author not found
+          content: {}
+      security:
+        - api_key: []
+    delete:
+      tags:
+        - blog
+      summary: Delete a author
+      operationId: deleteAuthor
+      parameters:
+        - name: api_key
+          in: header
+          schema:
+            type: string
+        - name: authorId
+          in: path
+          description: Author id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Author not found
+          content: {}
+  /blog/categories/{id}:
+    get:
+      tags:
+        - blog
+      summary: Find category by ID
+      description: Returns a single category
+      operationId: getCategoryById
+      parameters:
+        - name: categoryId
+          in: path
+          description: ID of category to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Category'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Category not found
+          content: {}
+      security:
+        - api_key: []
+    delete:
+      tags:
+        - blog
+      summary: Delete a category
+      operationId: deleteCategorie
+      parameters:
+        - name: api_key
+          in: header
+          schema:
+            type: string
+        - name: categoryId
+          in: path
+          description: Category id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Category not found
+          content: {}
+  /blog/tags/{id}:
+    get:
+      tags:
+        - blog
+      summary: Find tag by ID
+      description: Returns a single tag
+      operationId: getTagById
+      parameters:
+        - name: tagId
+          in: path
+          description: ID of tag to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Tag'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Tag not found
+          content: {}
+      security:
+        - api_key: []
+    delete:
+      tags:
+        - blog
+      summary: Delete a tags
+      operationId: deleteTag
+      parameters:
+        - name: api_key
+          in: header
+          schema:
+            type: string
+        - name: tagId
+          in: path
+          description: Tag id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Tag not found
+          content: {}
+  /blog/images/{id}:
+    get:
+      tags:
+        - blog
+      summary: Find image by ID
+      description: Returns a single image
+      operationId: getImageById
+      parameters:
+        - name: imageId
+          in: path
+          description: ID of image to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Image'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Image'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Image not found
+          content: {}
+      security:
+        - api_key: []
+    delete:
+      tags:
+        - blog
+      summary: Delete a image
+      operationId: deleteImage
+      parameters:
+        - name: api_key
+          in: header
+          schema:
+            type: string
+        - name: imageId
+          in: path
+          description: Image id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Image not found
+          content: {}
+  /blog/galleries/{id}:
+    get:
+      tags:
+        - blog
+      summary: Find gallery by ID
+      description: Returns a single gallery
+      operationId: getGalleryById
+      parameters:
+        - name: galleryId
+          in: path
+          description: ID of gallery to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Gallery'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gallery'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Gallery not found
+          content: {}
+      security:
+        - api_key: []
+    delete:
+      tags:
+        - blog
+      summary: Delete a gallery
+      operationId: deleteGallery
+      parameters:
+        - name: api_key
+          in: header
+          schema:
+            type: string
+        - name: galleryId
+          in: path
+          description: Gallery id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Gallery not found
+          content: {}
+  /product/mens:
+    get:
+      tags:
+        - product
+      summary: Get list of products mens
+      description: Returns a list of products mens
+      operationId: getMens
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int32
+      security:
+        - api_key: []
+    post:
+      tags:
+        - product
+      summary: Add a new product men to the product
+      operationId: placeMens
+      requestBody:
+        description: Products placed for the purchase of men's t-shirts
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        400:
+          description: Invalid Mens
+          content: {}
+      x-codegen-request-body-name: body
+  /product/women:
+    get:
+      tags:
+        - product
+      summary: Get list of products women
+      description: Returns a list of products women
+      operationId: getWomen
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int32
+      security:
+        - api_key: []
+    post:
+      tags:
+        - product
+      summary: Add a new product woman to the product
+      operationId: placeWomen
+      requestBody:
+        description: Products placed for the purchase of woman t-shirts
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        400:
+          description: Invalid Women
+          content: {}
+      x-codegen-request-body-name: body
+  /product/kids:
+    get:
+      tags:
+        - product
+      summary: Get list of products kids
+      description: Returns a list of products kids
+      operationId: getKids
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int32
+      security:
+        - api_key: []
+    post:
+      tags:
+        - product
+      summary: Add a new product kids to the product
+      operationId: placeKids
+      requestBody:
+        description: Products placed for the purchase of kids t-shirts
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        400:
+          description: Invalid Kids
+          content: {}
+      x-codegen-request-body-name: body
+  /product/{id}:
+    get:
+      tags:
+        - product
+      summary: Find a product by its ID
+      description: Returns a list of products
+      operationId: getProductById
+      parameters:
+        - name: productId
+          in: path
+          description: ID of product that needs to be fetched
+          required: true
+          schema:
+            maximum: 10.0
+            minimum: 1.0
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Product not found
+          content: {}
+    put:
+      tags:
+        - product
+      summary: Update an existing product
+      operationId: updateProduct
+      requestBody:
+        description: Product object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Product not found
+          content: {}
+        405:
+          description: Validation exception
+          content: {}
+    delete:
+      tags:
+        - product
+      summary: Delete a product
+      operationId: deleteProduct
+      parameters:
+        - name: productId
+          in: path
+          description: ID of the product that needs to be deleted
+          required: true
+          schema:
+            minimum: 1.0
+            type: integer
+            format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Product not found
+          content: {}
+  /product/colours/all:
+    get:
+      tags:
+        - product
+      summary: Get list of colours
+      description: Returns a list of colours to products
+      operationId: getColour
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int32
+      security:
+        - api_key: []
+  /product/colours/{id}:
+    get:
+      tags:
+        - product
+      summary: Find colour by ID
+      description: Returns a single colour
+      operationId: getColourById
+      parameters:
+        - name: colourId
+          in: path
+          description: ID of colour to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Colour'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Colour'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Colour not found
+          content: {}
+      security:
+        - api_key: []
+  /product/galleries/all:
+    get:
+      tags:
+        - product
+      summary: Get list of galleries
+      description: Returns a list of galleries to products
+      operationId: getGalleries
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int32
+      security:
+        - api_key: []
+  /product/galleries/{id}:
+    get:
+      tags:
+        - product
+      summary: Find gallery by ID
+      description: Returns a single gallery
+      operationId: getGalleryById
+      parameters:
+        - name: galleryId
+          in: path
+          description: ID of gallery to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Gallery'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gallery'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Gallery not found
+          content: {}
+      security:
+        - api_key: []
+  /product/images/all:
+    get:
+      tags:
+        - product
+      summary: Get list of images
+      description: Returns a list of images to products
+      operationId: getImages
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int32
+      security:
+        - api_key: []
+  /product/images/{id}:
+    get:
+      tags:
+        - product
+      summary: Find image by ID
+      description: Returns a single image
+      operationId: getImageById
+      parameters:
+        - name: imageId
+          in: path
+          description: ID of image to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Image'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Image'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: image not found
+          content: {}
+      security:
+        - api_key: []
+  /product/sizes/all:
+    get:
+      tags:
+        - product
+      summary: Get list of sizes
+      description: Returns a list of sizes to products
+      operationId: getSizes
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int32
+      security:
+        - api_key: []
+  /product/sizes/{id}:
+    get:
+      tags:
+        - product
+      summary: Find size by ID
+      description: Returns a single size
+      operationId: getSizeById
+      parameters:
+        - name: sizeId
+          in: path
+          description: ID of size to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Size'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Size'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Size not found
+          content: {}
+      security:
+        - api_key: []
+components:
+  schemas:
+    Article:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        title:
+          type: string
+        short_description:
+          type: string
+        content:
+          type: text
+        created_at:
+          type: DateTime
+        modified_at:
+          type: DateTime
+        published_at:
+          type: DateTime
+        seo_title:
+          type: string
+        seo_description:
+          type: string
+        slug:
+          type: string
+        author_id:
+          type: integer
+        category_id:
+          type: integer
+        image_id:
+          type: integer
+      xml:
+        name: Article
+    Author:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        email_verified_at:
+          type: DateTime
+        password:
+          type: string
+      xml:
+        name: Author
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        created_at:
+          type: DateTime
+        updated_at:
+          type: DateTime
+        slug:
+          type: string
+        seo_title:
+          type: string
+        seo_description:
+          type: string
+        image:
+          type: binary
+        parent_category_id:
+          type: integer
+      xml:
+        name: Category
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        created_at:
+          type: DateTime
+        updated_at:
+          type: DateTime
+        slug:
+          type: string
+      xml:
+        name: Tag
+    Image:
+      type: object
+      properties:
+        id:
+          type: integer
+        path:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: DateTime
+        updated_at:
+          type: DateTime
+        size:
+          type: float
+      xml:
+        name: Image
+    Gallery:
+      type: object
+      properties:
+        id:
+          type: integer
+        path:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: DateTime
+        updated_at:
+          type: DateTime
+        size:
+          type: float
+        article_id:
+          type: integer
+      xml:
+        name: Gallery
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        short_description:
+          type: string
+        currency:
+          type: string
+        price:
+          type: float
+        description:
+          type: string
+        rating:
+          type: integer
+        published_at:
+          type: DateTime
+        code:
+          type: string
+        features:
+          type: string
+        category_id:
+          type: integer
+        colour_id:
+          type: integer
+        image_id:
+          type: integer
+      xml:
+        name: Product
+    Colour:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      xml:
+        name: Colour
+    Size:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      xml:
+        name: Size
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
