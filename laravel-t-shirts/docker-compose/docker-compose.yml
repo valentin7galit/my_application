@@ -52,6 +52,18 @@ services:
       - laravel_t_shirts_network
     restart: unless-stopped
 
+  laravel-t-shirts-swagger:
+    image: swaggerapi/swagger-ui
+    container_name: laravel-t-shirts-swagger
+    volumes:
+      - "/home/valentin/Internship_Development-Aid/My_Application/application/laravel-t-shirts/swagger:/foo"
+    ports:
+      - "90:8080"
+    environment:
+      SWAGGER_JSON: /foo/t-shirts-app_specification.yaml
+    networks:
+      - laravel_t_shirts_network
+    restart: unless-stopped
 networks:
   laravel_t_shirts_network:
     driver: bridge
