@@ -23,13 +23,13 @@ tags:
   - name: product
     description: Access to Products
 paths:
-  /blog:
+  /articles:
     get:
       tags:
         - blog
       summary: Get list of articles
       description: Multiple status values can be provided with comma separated strings
-      operationId: findBlogsByStatus
+      operationId: findArticlessByStatus
       parameters:
         - name: status
           in: query
@@ -52,14 +52,10 @@ paths:
           content:
             application/xml:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Article'
+                $ref: '#/components/schemas/Article'
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Article'
+                $ref: '#/components/schemas/Article'
         400:
           description: Invalid status value
           content: {}
@@ -84,7 +80,7 @@ paths:
           description: Invalid input
           content: {}
       x-codegen-request-body-name: body
-  /blog/articles/{id}:
+  /articles/{id}:
     get:
       tags:
         - blog
@@ -166,7 +162,7 @@ paths:
         404:
           description: Article not found
           content: {}
-  /blog/authors/{id}:
+  /articles/authors/{id}:
     get:
       tags:
         - blog
@@ -187,10 +183,10 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/Author'
+                $ref: '#/components/schemas/ArticleAuthor'
             application/json:
               schema:
-                $ref: '#/components/schemas/Author'
+                $ref: '#/components/schemas/ArticleAuthor'
         400:
           description: Invalid ID supplied
           content: {}
@@ -223,7 +219,7 @@ paths:
         404:
           description: Author not found
           content: {}
-  /blog/categories/{id}:
+  /articles/categories/{id}:
     get:
       tags:
         - blog
@@ -244,10 +240,10 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/Category'
+                $ref: '#/components/schemas/ArticleCategory'
             application/json:
               schema:
-                $ref: '#/components/schemas/Category'
+                $ref: '#/components/schemas/ArticleCategory'
         400:
           description: Invalid ID supplied
           content: {}
@@ -280,7 +276,7 @@ paths:
         404:
           description: Category not found
           content: {}
-  /blog/tags/{id}:
+  /articles/tags/{id}:
     get:
       tags:
         - blog
@@ -301,10 +297,10 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/Tag'
+                $ref: '#/components/schemas/ArticleTag'
             application/json:
               schema:
-                $ref: '#/components/schemas/Tag'
+                $ref: '#/components/schemas/ArticleTag'
         400:
           description: Invalid ID supplied
           content: {}
@@ -337,7 +333,7 @@ paths:
         404:
           description: Tag not found
           content: {}
-  /blog/images/{id}:
+  /articles/images/{id}:
     get:
       tags:
         - blog
@@ -358,10 +354,10 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/Image'
+                $ref: '#/components/schemas/ArticleImage'
             application/json:
               schema:
-                $ref: '#/components/schemas/Image'
+                $ref: '#/components/schemas/ArticleImage'
         400:
           description: Invalid ID supplied
           content: {}
@@ -394,7 +390,7 @@ paths:
         404:
           description: Image not found
           content: {}
-  /blog/galleries/{id}:
+  /articles/galleries/{id}:
     get:
       tags:
         - blog
@@ -415,10 +411,10 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/Gallery'
+                $ref: '#/components/schemas/ArticleGallery'
             application/json:
               schema:
-                $ref: '#/components/schemas/Gallery'
+                $ref: '#/components/schemas/ArticleGallery'
         400:
           description: Invalid ID supplied
           content: {}
@@ -451,7 +447,7 @@ paths:
         404:
           description: Gallery not found
           content: {}
-  /product/mens:
+  /products/mens:
     get:
       tags:
         - product
@@ -462,12 +458,12 @@ paths:
         200:
           description: successful operation
           content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
             application/json:
               schema:
-                type: object
-                additionalProperties:
-                  type: integer
-                  format: int32
+                $ref: '#/components/schemas/Product'
       security:
         - api_key: []
     post:
@@ -496,7 +492,7 @@ paths:
           description: Invalid Mens
           content: {}
       x-codegen-request-body-name: body
-  /product/women:
+  /products/women:
     get:
       tags:
         - product
@@ -507,12 +503,12 @@ paths:
         200:
           description: successful operation
           content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
             application/json:
               schema:
-                type: object
-                additionalProperties:
-                  type: integer
-                  format: int32
+                $ref: '#/components/schemas/Product'
       security:
         - api_key: []
     post:
@@ -541,7 +537,7 @@ paths:
           description: Invalid Women
           content: {}
       x-codegen-request-body-name: body
-  /product/kids:
+  /products/kids:
     get:
       tags:
         - product
@@ -552,12 +548,12 @@ paths:
         200:
           description: successful operation
           content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
             application/json:
               schema:
-                type: object
-                additionalProperties:
-                  type: integer
-                  format: int32
+                $ref: '#/components/schemas/Product'
       security:
         - api_key: []
     post:
@@ -586,7 +582,7 @@ paths:
           description: Invalid Kids
           content: {}
       x-codegen-request-body-name: body
-  /product/{id}:
+  /products/{id}:
     get:
       tags:
         - product
@@ -599,8 +595,6 @@ paths:
           description: ID of product that needs to be fetched
           required: true
           schema:
-            maximum: 10.0
-            minimum: 1.0
             type: integer
             format: int64
       responses:
@@ -655,7 +649,6 @@ paths:
           description: ID of the product that needs to be deleted
           required: true
           schema:
-            minimum: 1.0
             type: integer
             format: int64
       responses:
@@ -665,7 +658,7 @@ paths:
         404:
           description: Product not found
           content: {}
-  /product/colours/all:
+  /products/colours/all:
     get:
       tags:
         - product
@@ -676,15 +669,15 @@ paths:
         200:
           description: successful operation
           content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProductColour'
             application/json:
               schema:
-                type: object
-                additionalProperties:
-                  type: integer
-                  format: int32
+                $ref: '#/components/schemas/ProductColour'
       security:
         - api_key: []
-  /product/colours/{id}:
+  /products/colours/{id}:
     get:
       tags:
         - product
@@ -705,10 +698,10 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/Colour'
+                $ref: '#/components/schemas/ProductColour'
             application/json:
               schema:
-                $ref: '#/components/schemas/Colour'
+                $ref: '#/components/schemas/ProductColour'
         400:
           description: Invalid ID supplied
           content: {}
@@ -717,59 +710,7 @@ paths:
           content: {}
       security:
         - api_key: []
-  /product/galleries/all:
-    get:
-      tags:
-        - product
-      summary: Get list of galleries
-      description: Returns a list of galleries to products
-      operationId: getGalleries
-      responses:
-        200:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties:
-                  type: integer
-                  format: int32
-      security:
-        - api_key: []
-  /product/galleries/{id}:
-    get:
-      tags:
-        - product
-      summary: Find gallery by ID
-      description: Returns a single gallery
-      operationId: getGalleryById
-      parameters:
-        - name: galleryId
-          in: path
-          description: ID of gallery to return
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        200:
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Gallery'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Gallery'
-        400:
-          description: Invalid ID supplied
-          content: {}
-        404:
-          description: Gallery not found
-          content: {}
-      security:
-        - api_key: []
-  /product/images/all:
+  /products/images/all:
     get:
       tags:
         - product
@@ -780,15 +721,15 @@ paths:
         200:
           description: successful operation
           content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProductImage'
             application/json:
               schema:
-                type: object
-                additionalProperties:
-                  type: integer
-                  format: int32
+                $ref: '#/components/schemas/ProductImage'
       security:
         - api_key: []
-  /product/images/{id}:
+  /products/images/{id}:
     get:
       tags:
         - product
@@ -809,10 +750,10 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/Image'
+                $ref: '#/components/schemas/ProductImage'
             application/json:
               schema:
-                $ref: '#/components/schemas/Image'
+                $ref: '#/components/schemas/ProductImage'
         400:
           description: Invalid ID supplied
           content: {}
@@ -821,7 +762,59 @@ paths:
           content: {}
       security:
         - api_key: []
-  /product/sizes/all:
+  /products/galleries/all:
+    get:
+      tags:
+        - product
+      summary: Get list of galleries
+      description: Returns a list of galleries to products
+      operationId: getGalleries
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProductGallery'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductGallery'
+      security:
+        - api_key: []
+  /products/galleries/{id}:
+    get:
+      tags:
+        - product
+      summary: Find gallery by ID
+      description: Returns a single gallery
+      operationId: getGalleryById
+      parameters:
+        - name: galleryId
+          in: path
+          description: ID of gallery to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProductGallery'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductGallery'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Gallery not found
+          content: {}
+      security:
+        - api_key: []
+  /products/sizes/all:
     get:
       tags:
         - product
@@ -832,15 +825,15 @@ paths:
         200:
           description: successful operation
           content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProductSize'
             application/json:
               schema:
-                type: object
-                additionalProperties:
-                  type: integer
-                  format: int32
+                $ref: '#/components/schemas/ProductSize'
       security:
         - api_key: []
-  /product/sizes/{id}:
+  /products/sizes/{id}:
     get:
       tags:
         - product
@@ -861,10 +854,10 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/Size'
+                $ref: '#/components/schemas/ProductSize'
             application/json:
               schema:
-                $ref: '#/components/schemas/Size'
+                $ref: '#/components/schemas/ProductSize'
         400:
           description: Invalid ID supplied
           content: {}
@@ -880,172 +873,241 @@ components:
       properties:
         id:
           type: integer
+          format: int64
         name:
           type: string
         title:
           type: string
-        short_description:
+        shortDescription:
           type: string
         content:
-          type: text
-        created_at:
-          type: DateTime
-        modified_at:
-          type: DateTime
-        published_at:
-          type: DateTime
-        seo_title:
           type: string
-        seo_description:
+        createdAt:
           type: string
+          format: date-time
+        modifiedAt:
+          type: string
+          format: date-time
+        publishedAt:
+          type: string
+          format: date-time
+        seoTitle:
+          type: string
+          maxLength: 60
+        seoDescription:
+          type: string
+          maxLength: 150
         slug:
           type: string
-        author_id:
+        authorId:
           type: integer
-        category_id:
+          format: int64
+        categoryId:
           type: integer
-        image_id:
+          format: int64
+        imageId:
           type: integer
+          format: int64
       xml:
         name: Article
-    Author:
+    ArticleAuthor:
       type: object
       properties:
         id:
           type: integer
+          format: int64
         name:
           type: string
         email:
           type: string
-        email_verified_at:
-          type: DateTime
+        emailVerifiedAt:
+          type: string
+          format: date-time
         password:
           type: string
       xml:
-        name: Author
-    Category:
+        name: ArticleAuthor
+    ArticleCategory:
       type: object
       properties:
         id:
           type: integer
+          format: int64
         name:
           type: string
-        created_at:
-          type: DateTime
-        updated_at:
-          type: DateTime
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
         slug:
           type: string
-        seo_title:
+        seoTitle:
           type: string
-        seo_description:
+          maxLength: 60
+        seoDescription:
           type: string
+          maxLength: 150
         image:
-          type: binary
-        parent_category_id:
+          type: string
+          format: binary
+        parentCategoryId:
           type: integer
       xml:
-        name: Category
-    Tag:
+        name: ArticleCategory
+    ArticleTag:
       type: object
       properties:
         id:
           type: integer
+          format: int64
         name:
           type: string
-        created_at:
-          type: DateTime
-        updated_at:
-          type: DateTime
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
         slug:
           type: string
       xml:
-        name: Tag
-    Image:
+        name: ArticleTag
+    ArticleImage:
       type: object
       properties:
         id:
           type: integer
+          format: int64
         path:
           type: string
         name:
           type: string
-        created_at:
-          type: DateTime
-        updated_at:
-          type: DateTime
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
         size:
-          type: float
+          type: number
+          format: float
       xml:
-        name: Image
-    Gallery:
+        name: ArticleImage
+    ArticleGallery:
       type: object
       properties:
         id:
           type: integer
+          format: int64
         path:
           type: string
         name:
           type: string
-        created_at:
-          type: DateTime
-        updated_at:
-          type: DateTime
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
         size:
-          type: float
-        article_id:
+          type: number
+          format: float
+        articleId:
           type: integer
+          format: int64
       xml:
-        name: Gallery
+        name: ArticleGallery
     Product:
       type: object
       properties:
         id:
           type: integer
+          format: int64
         name:
           type: string
-        short_description:
+          maxLength: 15
+        shortDescription:
           type: string
+          maxLength: 50
         currency:
           type: string
+          maxLength: 5
         price:
-          type: float
+          type: number
+          format: float
         description:
           type: string
         rating:
           type: integer
-        published_at:
-          type: DateTime
+        publishedAt:
+          type: string
+          format: date
         code:
           type: string
+          maxLength: 10
         features:
           type: string
-        category_id:
+        categoryId:
           type: integer
-        colour_id:
+          format: int64
+        colourId:
           type: integer
-        image_id:
+          format: int64
+        imageId:
           type: integer
+          format: int64
       xml:
         name: Product
-    Colour:
+    ProductColour:
       type: object
       properties:
         id:
           type: integer
+          format: int64
         name:
           type: string
       xml:
-        name: Colour
-    Size:
+        name: ProductColour
+    ProductImage:
       type: object
       properties:
         id:
           type: integer
+          format: int64
+        path:
+          type: string
         name:
           type: string
       xml:
-        name: Size
+        name: ProductImage
+    ProductGallery:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        path:
+          type: string
+        name:
+          type: string
+        productId:
+          type: integer
+          format: int64
+      xml:
+        name: ProductGallery
+    ProductSize:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          maxLength: 10
+      xml:
+        name: ProductSize
   securitySchemes:
     api_key:
       type: apiKey
