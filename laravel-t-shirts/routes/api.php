@@ -54,6 +54,7 @@ Route::delete('/blog/images/{id}', [ImagesApiController::class, 'delete']);
 Route::get('/blog/galleries/{id}', [GalleriesApiController::class, 'show']);
 Route::delete('/blog/galleries/{id}', [GalleriesApiController::class, 'delete']);
 
+Route::get('/products', [ProductsApiController::class, 'index']);
 Route::get('/products/mens', [ProductsMenApiController::class, 'index']);
 Route::post('/products/mens', [ProductsMenApiController::class, 'store']);
 Route::get('/products/women', [ProductsWomanApiController::class, 'index']);

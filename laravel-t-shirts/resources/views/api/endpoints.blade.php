@@ -182,6 +182,18 @@
             </div>
         </div>
         <h2 class="py-2 border-bottom border-secondary">Products:</h2>
+        <h4>All</h4>
+        <div class="row">
+            <div class="col-2">
+                <p class="p-2 btn btn-primary btn-block">GET</p>
+            </div>
+            <div class="col-7">
+                <p class="p-2">/products</p>
+            </div>
+            <div class="col-3">
+                <p class="p-2">Get list of products</p>
+            </div>
+        </div>
         <h4>Mens</h4>
         <div class="row">
             <div class="col-2">
