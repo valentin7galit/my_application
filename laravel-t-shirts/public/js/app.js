@@ -1875,6 +1875,155 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/productajax.js":
+/*!*************************************!*\
+  !*** ./resources/js/productajax.js ***!
+  \*************************************/
+/***/ (() => {
+
+var xhr = new XMLHttpRequest();
+
+xhr.onload = function () {
+  var object = JSON.parse(this.response).sort(function (a, b) {
+    return b.rating - a.rating;
+  });
+
+  for (var element in object) {
+    var elementRating = object[element].rating;
+    var ratingStar = void 0;
+
+    if (elementRating === 1) {
+      ratingStar = "\n                <i class=\"fas fa-star\"></i>\n                <i class=\"far fa-star\"></i>\n                <i class=\"far fa-star\"></i>\n                <i class=\"far fa-star\"></i>\n                <i class=\"far fa-star\"></i>";
+    } else if (elementRating === 2) {
+      ratingStar = "\n                <i class=\"fas fa-star\"></i>\n                <i class=\"fas fa-star\"></i>\n                <i class=\"far fa-star\"></i>\n                <i class=\"far fa-star\"></i>\n                <i class=\"far fa-star\"></i>";
+    } else if (elementRating === 3) {
+      ratingStar = "\n                <i class=\"fas fa-star\"></i>\n                <i class=\"fas fa-star\"></i>\n                <i class=\"fas fa-star\"></i>\n                <i class=\"far fa-star\"></i>\n                <i class=\"far fa-star\"></i>";
+    } else if (elementRating === 4) {
+      ratingStar = "\n                <i class=\"fas fa-star\"></i>\n                <i class=\"fas fa-star\"></i>\n                <i class=\"fas fa-star\"></i>\n                <i class=\"fas fa-star\"></i>\n                <i class=\"far fa-star\"></i>";
+    } else if (elementRating === 5) {
+      ratingStar = "\n                <i class=\"fas fa-star\"></i>\n                <i class=\"fas fa-star\"></i>\n                <i class=\"fas fa-star\"></i>\n                <i class=\"fas fa-star\"></i>\n                <i class=\"fas fa-star\"></i>";
+    }
+
+    var cardContent = "\n            <a href=\"/products/" + object[element].id + "\">\n                <div class=\"img-cart\">\n                    <img src=\"" + object[element].product_images.path + "\" alt=\"" + object[element].product_images.name + "\" class=\"w-100 products-img\">\n                    <div class=\"p-2 block-cart\">\n                        <a href=\"#\" class=\"btn btn-secondary btn-block\">Add to Cart</a>\n                    </div>\n                </div>\n            </a>\n            <div class=\"row py-2\">\n                <div class=\"col-sm-8 col-7\">\n                    <h5>\n                        <a href=\"/products/" + object[element].id + "\" class=\"products-link\">" + object[element].name + "</a>\n                    </h5>\n                </div>\n                <div class=\"col-sm-4 col-5\">\n                    <h5 class=\"text-right\">" + object[element].currency + object[element].price + "</h5>\n                </div>\n            </div>\n            <div class=\"border-top border-dark\">\n                <p class=\"text-secondary m-0 py-2\">" + object[element].short_description + "</p>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-sm-7 col-12\">\n                    " + ratingStar + "\n                </div>\n                <div class=\"col-sm-5 col-12\">\n                    <p class=\"text-secondary font-italic product-text\">" + object[element].published_at + "</p>\n                </div>\n            </div>";
+    var cardWrapperVisible = "\n            <div class=\"col-lg-3 col-6 py-3\">\n                " + cardContent + "\n            </div>";
+    var cardWrapperHidden = "\n            <div class=\"col-lg-3 col-6 py-3 product-none-carousel\">\n                " + cardContent + "\n            </div>";
+
+    if (element < 2) {
+      document.getElementById('item-1').innerHTML += cardWrapperVisible;
+    } else if (element >= 2 && element < 4) {
+      document.getElementById('item-1').innerHTML += cardWrapperHidden;
+    } else if (element >= 4 && element < 6) {
+      document.getElementById('item-2').innerHTML += cardWrapperVisible;
+    } else if (element >= 6 && element < 8) {
+      document.getElementById('item-2').innerHTML += cardWrapperHidden;
+    }
+  }
+};
+
+xhr.open("GET", "http://localhost:88/api/products", true);
+xhr.send();
+
+/***/ }),
+
+/***/ "./resources/js/productsort.js":
+/*!*************************************!*\
+  !*** ./resources/js/productsort.js ***!
+  \*************************************/
+/***/ (() => {
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+var array = _toConsumableArray(document.getElementsByClassName('protuct-sort'));
+
+window.sortA = function () {
+  var sortAscend = array.slice().sort(function (a, b) {
+    if (a.dataset.name < b.dataset.name) {
+      return -1;
+    }
+
+    if (b.dataset.name < a.dataset.name) {
+      return 1;
+    }
+
+    return 0;
+  });
+  sortAscend.forEach(function (elem, index) {
+    return elem.style.order = index;
+  });
+};
+
+window.sortZ = function () {
+  var sortDescend = array.slice().sort(function (a, b) {
+    if (a.dataset.name > b.dataset.name) {
+      return -1;
+    }
+
+    if (b.dataset.name > a.dataset.name) {
+      return 1;
+    }
+
+    return 0;
+  });
+  sortDescend.forEach(function (elem, index) {
+    return elem.style.order = index;
+  });
+};
+
+window.sortLow = function () {
+  var sortAscend = array.slice().sort(function (a, b) {
+    return a.dataset.price - b.dataset.price;
+  });
+  sortAscend.forEach(function (elem, index) {
+    return elem.style.order = index;
+  });
+};
+
+window.sortHigh = function () {
+  var sortDescend = array.slice().sort(function (a, b) {
+    return b.dataset.price - a.dataset.price;
+  });
+  sortDescend.forEach(function (elem, index) {
+    return elem.style.order = index;
+  });
+};
+
+window.sortTime = function () {
+  var sortDescend = array.slice().sort(function (a, b) {
+    return b.dataset.time - a.dataset.time;
+  });
+  sortDescend.forEach(function (elem, index) {
+    return elem.style.order = index;
+  });
+};
+
+window.sortPopular = function () {
+  var sortDescend = array.slice().sort(function (a, b) {
+    return b.dataset.popular - a.dataset.popular;
+  });
+  sortDescend.forEach(function (elem, index) {
+    return elem.style.order = index;
+  });
+};
+
+window.showDefault = function () {
+  var showArray = array;
+  showArray.forEach(function (elem, index) {
+    return elem.style.order = index;
+  });
+};
+
+/***/ }),
+
 /***/ "./node_modules/lodash/lodash.js":
 /*!***************************************!*\
   !*** ./node_modules/lodash/lodash.js ***!
@@ -19453,6 +19602,8 @@ process.umask = function() { return 0; };
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
 /******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/productsort.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/productajax.js")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
