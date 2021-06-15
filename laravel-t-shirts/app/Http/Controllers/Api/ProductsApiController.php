@@ -8,6 +8,13 @@ use App\Models\Product;
 
 class ProductsApiController extends Controller
 {
+    public function index()
+    {
+        $products = Product::with('product_images')->get();;
+        
+        return $products;
+    }
+
     public function show($id)
     {
         return Product::find($id);
