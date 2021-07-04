@@ -5,14 +5,15 @@ import CartComponent from "./components/CartComponent";
 
 require('./bootstrap');
 
-Vue.component('add_cart', AddCartComponent);
+Vue.component('add-cart', AddCartComponent);
 Vue.component('cart', CartComponent);
 
 const app = new Vue({
     el: '#app',
     data() {
         return {
-            cart: []
+            /* Homework page refresh saving count cart */
+            cart: JSON.parse(localStorage.getItem('cart')) || []
         }
     },
     methods: {

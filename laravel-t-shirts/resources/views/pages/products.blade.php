@@ -116,12 +116,11 @@
                                         <div class="img-cart">
                                             <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
                                             <div class="p-2 block-cart">
-                                                <add_cart :product_id="{{ json_encode($product->id) }}" :product_name="{{ json_encode($product->name) }}" :product_price="{{ json_encode($product->price) }}"></add_cart>
+                                                {{-- Button add to cart for Vue --}}
+                                                <add-cart :product_id="{{ json_encode($product->id) }}" :product_name="{{ json_encode($product->name) }}" :product_price="{{ json_encode($product->price) }}"></add-cart>
                                             </div>
                                         </div>
                                     </a>
-                                    {{-- <cart-component></cart-component>
-                                    <add-to-cart :product-id="1"></add-to-cart> --}}
                                     <div class="row py-2">
                                         <div class="col-sm-8 col-7">    
                                             <h5 class="">

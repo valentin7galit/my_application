@@ -11,15 +11,14 @@ export default {
     name: "CartComponent",
     computed: {
         cartCount() {
-            console.log(JSON.parse(localStorage.getItem('cart')))
             return this.$root.cart.length;
             /* const storageData = JSON.parse(localStorage.getItem('cart'));
-            return storageData.length;
-            console.log(storageData.length); */
+            return storageData.length */
         }
     }
 }
 </script>
+
 <style scoped>
 .button-cart {
     margin-top: .10rem;

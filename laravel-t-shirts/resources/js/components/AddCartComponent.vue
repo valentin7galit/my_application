@@ -23,11 +23,6 @@
                     price: this.product_price
                 });
             }
-        }/* ,
-        mounted() {
-            console.log({id: this.product_id, name: this.product_price});
-        } */
+        }
     }
 </script>
-
-<style scoped></style>
