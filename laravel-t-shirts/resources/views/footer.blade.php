@@ -22,7 +22,7 @@
         <div class="col-lg-3 col-6">
             <h2>Information</h2>
             <p>
-                <a href="{{ url('/about-us') }}" class="text-dark text-decor">About Up</a>
+                <a href="{{ url('/about-us') }}" class="text-dark text-decor">About Us</a>
             </p>
             <p>
                 <a href="{{ url('/terms-and-conditions') }}" class="text-dark text-decor">Terms and Conditions</a>

@@ -36,11 +36,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <cart></cart>
+                </li>
             </ul>
         </div>
-        <!-- Social Media -->
+        {{-- <!-- Social Media -->
         <a href="https://www.facebook.com/" class="link-social-media text-secondary" target="blank">
             <i class="fab fa-facebook-square pl-2 border-left border-secondary"></i>
-        </a>
+        </a> --}}
     </div>
 </div>
