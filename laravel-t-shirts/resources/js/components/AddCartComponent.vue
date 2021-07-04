@@ -1,5 +1,5 @@
 <template>
-    <a href="#" @click="addToCart()" :disabled="isProductAdded()" class="btn btn-secondary btn-block">
+    <a href="javascript:void(0)" @click="addToCart()" :disabled="isProductAdded()" class="btn btn-secondary btn-block">
         {{ isProductAdded() ? 'Added to cart' : 'Add to cart'}}
     </a>
 </template>

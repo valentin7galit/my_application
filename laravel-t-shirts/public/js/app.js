@@ -19793,7 +19793,7 @@ var render = function() {
     "a",
     {
       staticClass: "btn btn-secondary btn-block",
-      attrs: { href: "#", disabled: _vm.isProductAdded() },
+      attrs: { href: "javascript:void(0)", disabled: _vm.isProductAdded() },
       on: {
         click: function($event) {
           return _vm.addToCart()
