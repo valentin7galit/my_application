@@ -115,6 +115,6 @@
             </div>
         </div>
         <h2>Features</h2>
-        <p>{{ $products->features }}</p>
+        <p>{!! $products->features !!}</p>
     </div>
 @endsection
