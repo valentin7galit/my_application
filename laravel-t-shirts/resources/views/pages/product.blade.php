@@ -64,47 +64,16 @@
                     </div>
                     <img src="{{ $products->product_images->path }}" alt="{{ $products->product_images->name }}" class="sing-product-img">
                 </div>
-                <div class="py-2 border-bottom border-secondary">
-                    <h5 class="">Size</h5>
-                    <div class="radio-size row">
-                        <div class="col-2">
-                            <input type="radio" id="xs" name="Size" value="xs">
-                            <label for="xs" class="btn btn-outline-secondary size-product p-2">XS</label>
-                        </div>
-                        <div class="col-2">
-                            <input type="radio" id="s" name="Size" value="s">
-                            <label for="s" class="btn btn-outline-secondary size-product p-2">S</label>
-                        </div>
-                        <div class="col-2">
-                            <input type="radio" id="m" name="Size" value="m">
-                            <label for="m" class="btn btn-outline-secondary size-product p-2">M</label>
-                        </div>
-                        <div class="col-2">
-                            <input type="radio" id="l" name="Size" value="l">
-                            <label for="l" class="btn btn-outline-secondary size-product p-2">L</label>
-                        </div>
-                        <div class="col-2">
-                            <input type="radio" id="xl" name="Size" value="xl">
-                            <label for="xl" class="btn btn-outline-secondary size-product p-2">XL</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <div class="form-group">
-                                <select class="form-control p-2 btn btn-outline-secondary">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-10">
-                            <button type="button" class="btn btn-secondary btn-block">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
+                {{-- Button add to cart for Vue --}}
+                <add-cart 
+                    :product_id="{{ json_encode($products->id) }}" 
+                    :product_img="{{ json_encode($products->product_images->path) }}" 
+                    :product_img_name="{{ json_encode($products->product_images->name) }}" 
+                    :product_name="{{ json_encode($products->name) }}" 
+                    :product_price="{{ json_encode($products->price) }}"
+                    :product_size="{{ json_encode($products->sizes) }}"
+                    :product_size_stock="{{ json_encode($products->lot_sizes) }}">
+                </add-cart>
                 <div class="py-2">
                     <h5>Description</h5>
                     <p>{{ $products->description }}</p>
