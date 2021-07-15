@@ -1,12 +1,13 @@
 import Vue from "vue";
 import AddCartComponent from "./components/AddCartComponent.vue";
 import CartComponent from "./components/CartComponent";
-/* import store from "store"; */
+import ShowCartComponent from "./components/ShowCartComponent";
 
 require('./bootstrap');
 
 Vue.component('add-cart', AddCartComponent);
-Vue.component('cart', CartComponent);
+Vue.component('cart-count', CartComponent);
+Vue.component('show-cart', ShowCartComponent);
 
 const app = new Vue({
     el: '#app',
@@ -30,11 +31,10 @@ const app = new Vue({
                 return false;
             }
 
-            /* Homework add one product unique
-            const productIndex = this.cart.indexOf(product => product === productId); */
+            /* Homework add one product unique */
             const productIndex = this.cart.findIndex(product => product.id === productId.id);
         
             return productIndex !== -1;
-        },
+        }
     }
 });
