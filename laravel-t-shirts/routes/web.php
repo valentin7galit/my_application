@@ -43,6 +43,11 @@ Route::get('/blog/article/{id}', [ArticleController::class, 'show']);
 Route::get('/blog/category/{id}', [CategoryController::class, 'show']);
 Route::get('/blog/tag/{id}', [TagController::class, 'show']);
 
+Route::get('/cart', function() 
+{
+    return view('pages.cart');
+});
+
 Route::get('/contact', ['users', function () {
     /* dd(\Cache::get('statuses')); */
     return view('pages.contactpage');
