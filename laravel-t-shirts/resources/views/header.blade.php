@@ -37,13 +37,13 @@
                     <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <cart></cart>
+                    <a href="{{ url('/cart') }}" class="button-cart btn btn-outline-secondary">
+                        <i class="fas fa-shopping-cart"></i> Cart 
+                        {{-- Number cart count for Vue --}}
+                        <cart-count></cart-count>
+                    </a>
                 </li>
             </ul>
         </div>
-        {{-- <!-- Social Media -->
-        <a href="https://www.facebook.com/" class="link-social-media text-secondary" target="blank">
-            <i class="fab fa-facebook-square pl-2 border-left border-secondary"></i>
-        </a> --}}
     </div>
 </div>
