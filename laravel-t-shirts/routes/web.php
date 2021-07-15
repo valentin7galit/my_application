@@ -47,6 +47,10 @@ Route::get('/cart', function()
 {
     return view('pages.cart');
 });
+Route::get('/wishlist', function() 
+{
+    return view('pages.wishlist');
+});
 
 Route::get('/contact', ['users', function () {
     /* dd(\Cache::get('statuses')); */
