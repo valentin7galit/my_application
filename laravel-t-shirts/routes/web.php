@@ -14,6 +14,9 @@ use App\Http\Controllers\ProductMenController;
 use App\Http\Controllers\ProductWomanController;
 use App\Http\Controllers\ProductKidController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ShippingController;
+
 use App\Http\Middleware\LoggingMiddleware;
 
 /*
@@ -43,12 +46,14 @@ Route::get('/blog/article/{id}', [ArticleController::class, 'show']);
 Route::get('/blog/category/{id}', [CategoryController::class, 'show']);
 Route::get('/blog/tag/{id}', [TagController::class, 'show']);
 
-Route::get('/cart', function() 
-{
-    return view('pages.cart');
+Route::get('/cart', [CartController::class, 'index']);
+Route::get('/cart/shipping', [ShippingController::class, 'index']);
+Route::post('/cart/shipping', [ShippingController::class, '__invoke'])->name('shipping-form');
+Route::get('/cart/shipping/success', function() {
+    return view('emails.shippingsuccess');
 });
-Route::get('/wishlist', function() 
-{
+
+Route::get('/wishlist', function() {
     return view('pages.wishlist');
 });
 
