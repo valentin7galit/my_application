@@ -189,6 +189,14 @@
 .error-page {
     font-size: 250px;
 }
+/* Cart */
+.button-cart {
+    margin-top: .10rem;
+}
+.button-cart:hover .number-cart {
+  background-color: #fff;
+  color: #6c757d;
+}
 
 /* Extra Large */
 @media (max-width: 1200px) {

@@ -116,8 +116,14 @@
                                         <div class="img-cart">
                                             <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
                                             <div class="p-2 block-cart">
-                                                {{-- Button add to cart for Vue --}}
-                                                <add-cart :product_id="{{ json_encode($product->id) }}" :product_name="{{ json_encode($product->name) }}" :product_price="{{ json_encode($product->price) }}"></add-cart>
+                                                {{-- Button add to wishlist for Vue --}}
+                                                <add-wishlist 
+                                                    product_id="{{ $product->id }}" 
+                                                    product_img="{{ $product->product_images->path }}" 
+                                                    product_img_name="{{ $product->product_images->name }}" 
+                                                    product_name="{{ $product->name }}" 
+                                                    product_price="{{ $product->price }}">
+                                                </add-wishlist>
                                             </div>
                                         </div>
                                     </a>
