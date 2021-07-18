@@ -1,7 +1,5 @@
 <template>
     <div class="py-2 border-bottom border-secondary">
-        <!-- <p>{{ product_size }}</p>
-        <p>{{ product_size_stock }}</p> -->
         <h5 class="">Size</h5>
         <div class="radio-size row">
             <div v-for="element_size in product_size" :key="element_size.id" class="col-2">
@@ -18,9 +16,9 @@
                 </div>
             </div>
             <div class="col-10">
-                <a href="javascript:void(0)" @click="addToCart()" :disabled="isProductAdded()" class="btn btn-secondary btn-block">
+                <button  @click="addToCart()" :disabled="isSizeSelected(selectedSize) || isProductAdded()" class="btn btn-secondary btn-block">
                     {{ isProductAdded() ? 'Added to cart' : 'Add to cart'}}
-                </a>
+                </button>
             </div>
         </div>
     </div>
@@ -74,6 +72,13 @@
                         this.totalStock = element.total_stock;
                     }
                 });
+            },
+            isSizeSelected(valueSize) {
+                if (valueSize === null) {
+                    return true;
+                }
+
+                return false;
             }
         }
     }
