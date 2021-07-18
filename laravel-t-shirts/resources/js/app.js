@@ -1,5 +1,9 @@
 import Vue from "vue";
 
+/* Package Vuelidate */
+import Vuelidate from 'vuelidate';
+Vue.use(Vuelidate);
+
 import AddCartComponent from "./components/AddCartComponent.vue";
 import CartComponent from "./components/CartComponent";
 import ShowCartComponent from "./components/ShowCartComponent";
@@ -7,6 +11,9 @@ import ShowCartComponent from "./components/ShowCartComponent";
 import AddWishlistComponent from "./components/AddWishlistComponent";
 import WishlistComponent from "./components/WishlistComponent";
 import ShowWishlistComponent from "./components/ShowWishlistComponent";
+
+import OrderSummaryComponent from "./components/OrderSummaryComponent";
+import DeliveryDetailsComponent from "./components/DeliveryDetailsComponent";
 
 require('./bootstrap');
 
@@ -17,6 +24,9 @@ Vue.component('show-cart', ShowCartComponent);
 Vue.component('add-wishlist', AddWishlistComponent);
 Vue.component('wishlist-count', WishlistComponent);
 Vue.component('show-wishlist', ShowWishlistComponent);
+
+Vue.component('order-summary', OrderSummaryComponent);
+Vue.component('delivery-details', DeliveryDetailsComponent);
 
 const app = new Vue({
     el: '#app',
