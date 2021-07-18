@@ -79,10 +79,7 @@
                             <div class="col-lg-3 col-6 py-3">
                                 <a href="/products/{{ $product->id }}">
                                     <div class="img-cart">
-                                        <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
-                                        <div class="p-2 block-cart">
-                                            <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
-                                        </div>
+                                        <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">         
                                     </div>
                                 </a>
                                 <div class="row py-2">
@@ -147,9 +144,6 @@
                                 <a href="/products/{{ $product->id }}">
                                     <div class="img-cart">
                                         <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
-                                        <div class="p-2 block-cart">
-                                            <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
-                                        </div>
                                     </div>
                                 </a>
                                 <div class="row py-2">
@@ -218,9 +212,6 @@
                                 <a href="/products/{{ $product->id }}">
                                     <div class="img-cart">
                                         <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
-                                        <div class="p-2 block-cart">
-                                            <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
-                                        </div>
                                     </div>
                                 </a>
                                 <div class="row py-2">
@@ -285,9 +276,6 @@
                                 <a href="/products/{{ $product->id }}">
                                     <div class="img-cart">
                                         <img src="{{ $product->product_images->path }}" alt="{{ $product->product_images->name }}" class="w-100 products-img">
-                                        <div class="p-2 block-cart">
-                                            <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
-                                        </div>
                                     </div>
                                 </a>
                                 <div class="row py-2">
@@ -527,9 +515,6 @@
                     <a href="/products/` + object[element].id + `">
                         <div class="img-cart">
                             <img src="` + object[element].product_images.path + `" alt="` + object[element].product_images.name + `" class="w-100 products-img">
-                            <div class="p-2 block-cart">
-                                <a href="#" class="btn btn-secondary btn-block">Add to Cart</a>
-                            </div>
                         </div>
                     </a>
                     <div class="row py-2">
