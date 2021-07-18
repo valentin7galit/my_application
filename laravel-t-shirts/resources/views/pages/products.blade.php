@@ -118,11 +118,11 @@
                                             <div class="p-2 block-cart">
                                                 {{-- Button add to wishlist for Vue --}}
                                                 <add-wishlist 
-                                                    :product_id="{{ json_encode($product->id) }}" 
-                                                    :product_img="{{ json_encode($product->product_images->path) }}" 
-                                                    :product_img_name="{{ json_encode($product->product_images->name) }}" 
-                                                    :product_name="{{ json_encode($product->name) }}" 
-                                                    :product_price="{{ json_encode($product->price) }}">
+                                                    product_id="{{ $product->id }}" 
+                                                    product_img="{{ $product->product_images->path }}" 
+                                                    product_img_name="{{ $product->product_images->name }}" 
+                                                    product_name="{{ $product->name }}" 
+                                                    product_price="{{ $product->price }}">
                                                 </add-wishlist>
                                             </div>
                                         </div>
