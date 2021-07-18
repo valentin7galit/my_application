@@ -7,30 +7,37 @@
         <div v-else>
             <div class="row">
                 <div class="col-md-8 col-12">
-                    <!-- <p>{{ cartObjects }}</p> -->
                     <h3 class="border-top border-secondary py-2">Products</h3>
                     <div v-for="(element, index) in cartObjects" :key="element.id">
                         <div class="row pb-4">
-                            <div class="col-2">
+                            <div class="col-lg-2 col-2">
                                 <a :href="'/products/' + element.id">
                                     <img :src="element.images" :alt="element.images_name" class=" w-100">
                                 </a>
                             </div>
-                            <div class="col-2">
+                            <div class="col-lg-3 col-2">
                                 <p class="py-1">
                                     <a :href="'/products/' + element.id" class="products-link">{{ element.name }}</a>
                                 </p>
                             </div>
-                            <div class="col-2">
-                                <p>{{ element.size }}</p>
+                            <div class="col-lg-1 col-1">
+                                <p class="py-1">{{ element.size }}</p>
                             </div>
-                            <div class="col-2">
-                                <p>{{ element.quantity }}</p>
+                            <div class="col-lg-2 col-3">
+                                <div class="row">
+                                <div class="col-5">
+                                    <button class="btn btn-secondary w-100 p-1" @click="removeProduct(element.id)">-</button>
+                                </div>
+                                <span class="py-1">{{ element.quantity }}</span>
+                                <div class="col-5">
+                                    <button class="btn btn-secondary w-100 p-1" @click="addProduct(element.id, element.size)">+</button>
+                                </div>
+                                </div>
                             </div>
-                            <div class="col-2">
-                                <button class="btn btn-secondary w-100 p-1" @click="deleteProduct(index)">remove</button>
+                            <div class="col-lg-2 col-2">
+                                <button class="btn btn-secondary w-100 p-1" @click="deleteProduct(index)">delete</button>
                             </div>
-                            <div class="col-2 text-right">
+                            <div class="col-lg-2 col-2 text-right">
                                 <p class="py-1">${{ productPrice[index] }}</p>
                             </div>
                         </div>
@@ -62,7 +69,7 @@
                             <h3 class="py-2">${{ totalePrice }}</h3>
                         </div>
                     </div>
-                    <button class="btn btn-secondary w-100">Proceed to purchase</button>
+                    <a href="/cart/shipping" class="btn btn-secondary w-100">Proceed to purchase</a>
                 </div>
             </div>
         </div>
@@ -77,6 +84,10 @@ export default {
             deliveryPrice: 5
         }
     },
+    props: [
+        'product_size_stock',
+        'product_sizes'
+    ],
     computed: {
         cartCount() {
             return this.$root.cart.length;
@@ -88,7 +99,9 @@ export default {
             let cartPrice = [];
             
             this.cartObjects.forEach(element => {
-                cartPrice.push(element.price * element.quantity);
+                let price = element.price * element.quantity;
+
+                cartPrice.push(Number(price.toFixed(2)));
             });
             
             return cartPrice;
@@ -110,8 +123,41 @@ export default {
             
             localStorage.setItem('cart', JSON.stringify(this.$root.cart));
         },
-        onChange(value) {
-            console.log(value)
+        addProduct(productId, productSize) {
+            let maxQuantity = 1;
+
+            this.product_size_stock.forEach(element => {
+                if (element.product_id == productId) {
+                    this.product_sizes.forEach(elementSizes => {
+                        if (elementSizes.name === productSize) {
+                            if (elementSizes.id === element.size_id) {
+                                maxQuantity = element.total_stock;
+                            }
+                        }
+                    });
+                }
+            });
+
+            this.$root.cart.forEach(element => {
+                if (element.id === productId) {
+                    if (element.quantity < maxQuantity) {
+                        element.quantity += 1;
+                    }
+                }
+            });
+
+            localStorage.setItem('cart', JSON.stringify(this.$root.cart));
+        },
+        removeProduct(productId) {
+            this.$root.cart.forEach(element => {
+                if (element.id === productId) {
+                    if (element.quantity > 1) {
+                        element.quantity -= 1;
+                    }
+                }
+            });
+
+            localStorage.setItem('cart', JSON.stringify(this.$root.cart));
         }
     }
 }
