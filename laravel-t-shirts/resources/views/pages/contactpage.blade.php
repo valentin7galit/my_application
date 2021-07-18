@@ -42,9 +42,9 @@
                         <h4>Find us on</h4>
                     </div>
                     <div class="col-md-8 col-9">
-                        <p class="padd-text">Republic of Moldova, Chisinau, st. Dacia 38<br><span>Monday - Friday: 09:00 - 18:00</span></p>
-                        <p class="padd-text">+373 68297577</p>
-                        <p class="padd-text">valentin7galit@gmail.com</p>
+                        <p class="padd-text">Republic of Moldova, Chisinau, st. Dacia 20<br><span>Monday - Friday: 09:00 - 18:00</span></p>
+                        <p class="padd-text">+373 42781245</p>
+                        <p class="padd-text">t-shirts@info.com</p>
                         <p class="padd-text">
                             <a href="https://www.facebook.com/" target="blanck" class="text-decor link-color">
                                 <i class="fab fa-facebook-f h3"></i>
