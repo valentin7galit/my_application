@@ -66,11 +66,11 @@
                 </div>
                 {{-- Button add to cart for Vue --}}
                 <add-cart 
-                    :product_id="{{ json_encode($products->id) }}" 
-                    :product_img="{{ json_encode($products->product_images->path) }}" 
-                    :product_img_name="{{ json_encode($products->product_images->name) }}" 
-                    :product_name="{{ json_encode($products->name) }}" 
-                    :product_price="{{ json_encode($products->price) }}"
+                    product_id="{{ $products->id }}" 
+                    product_img="{{ $products->product_images->path }}" 
+                    product_img_name="{{ $products->product_images->name }}" 
+                    product_name="{{ $products->name }}" 
+                    product_price="{{ $products->price }}"
                     :product_size="{{ json_encode($products->sizes) }}"
                     :product_size_stock="{{ json_encode($products->lot_sizes) }}">
                 </add-cart>
