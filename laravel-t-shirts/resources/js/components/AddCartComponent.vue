@@ -2,12 +2,58 @@
     <div class="py-2 border-bottom border-secondary">
         <h5 class="">Size</h5>
         <div class="radio-size row">
-            <div v-for="element_size in product_size" :key="element_size.id" class="col-2">
-                <input v-model="selectedSize" @change="onChange(element_size.id)" type="radio" :id="element_size.name.toLowerCase()" name="Size" :value="element_size.name">
-                <label :for="element_size.name.toLowerCase()" class="btn btn-outline-secondary size-product p-2">{{ element_size.name }}</label>
+            <div v-for="(element_size, index) in product_size" :key="element_size.id" class="col-2">
+                <span v-if="element_size.name === 'XS' && sizeStockArray[index] > 0">
+                    <input v-model="selectedSize" @change="onChange(element_size.id)" type="radio" :id="element_size.name.toLowerCase()" name="Size" :value="element_size.name">
+                    <label :for="element_size.name.toLowerCase()" class="btn btn-outline-secondary size-product p-2">{{ element_size.name }}</label>
+                </span>
+                <span v-else-if="element_size.name === 'XS' && sizeStockArray[index] === 0">
+                    <input disabled v-model="selectedSize" @change="onChange(element_size.id)" type="radio" :id="element_size.name.toLowerCase()" name="Size" :value="element_size.name">
+                    <button disabled :for="element_size.name.toLowerCase()" class="btn btn-outline-secondary size-product p-2">{{ element_size.name }}</button>
+                </span>
+                <span v-if="element_size.name === 'S' && sizeStockArray[index] > 0">
+                    <input v-model="selectedSize" @change="onChange(element_size.id)" type="radio" :id="element_size.name.toLowerCase()" name="Size" :value="element_size.name">
+                    <label :for="element_size.name.toLowerCase()" class="btn btn-outline-secondary size-product p-2">{{ element_size.name }}</label>
+                </span>
+                <span v-else-if="element_size.name === 'S' && sizeStockArray[index] === 0">
+                    <input disabled v-model="selectedSize" @change="onChange(element_size.id)" type="radio" :id="element_size.name.toLowerCase()" name="Size" :value="element_size.name">
+                    <button disabled :for="element_size.name.toLowerCase()" class="btn btn-outline-secondary size-product p-2">{{ element_size.name }}</button>
+                </span>
+                <span v-if="element_size.name === 'M' && sizeStockArray[index] > 0">
+                    <input v-model="selectedSize" @change="onChange(element_size.id)" type="radio" :id="element_size.name.toLowerCase()" name="Size" :value="element_size.name">
+                    <label :for="element_size.name.toLowerCase()" class="btn btn-outline-secondary size-product p-2">{{ element_size.name }}</label>
+                </span>
+                <span v-else-if="element_size.name === 'M' && sizeStockArray[index] === 0">
+                    <input disabled v-model="selectedSize" @change="onChange(element_size.id)" type="radio" :id="element_size.name.toLowerCase()" name="Size" :value="element_size.name">
+                    <button disabled :for="element_size.name.toLowerCase()" class="btn btn-outline-secondary size-product p-2">{{ element_size.name }}</button>
+                </span>
+                <span v-if="element_size.name === 'L' && sizeStockArray[index] > 0">
+                    <input v-model="selectedSize" @change="onChange(element_size.id)" type="radio" :id="element_size.name.toLowerCase()" name="Size" :value="element_size.name">
+                    <label :for="element_size.name.toLowerCase()" class="btn btn-outline-secondary size-product p-2">{{ element_size.name }}</label>
+                </span>
+                <span v-else-if="element_size.name === 'L' && sizeStockArray[index] === 0">
+                    <input disabled v-model="selectedSize" @change="onChange(element_size.id)" type="radio" :id="element_size.name.toLowerCase()" name="Size" :value="element_size.name">
+                    <button disabled :for="element_size.name.toLowerCase()" class="btn btn-outline-secondary size-product p-2">{{ element_size.name }}</button>
+                </span>
+                <span v-if="element_size.name === 'XL' && sizeStockArray[index] > 0">
+                    <input v-model="selectedSize" @change="onChange(element_size.id)" type="radio" :id="element_size.name.toLowerCase()" name="Size" :value="element_size.name">
+                    <label :for="element_size.name.toLowerCase()" class="btn btn-outline-secondary size-product p-2">{{ element_size.name }}</label>
+                </span>
+                <span v-else-if="element_size.name === 'XL' && sizeStockArray[index] === 0">
+                    <input disabled v-model="selectedSize" @change="onChange(element_size.id)" type="radio" :id="element_size.name.toLowerCase()" name="Size" :value="element_size.name">
+                    <button disabled :for="element_size.name.toLowerCase()" class="btn btn-outline-secondary size-product p-2">{{ element_size.name }}</button>
+                </span>
+                <span v-if="element_size.name === 'XXL' && sizeStockArray[index] > 0">
+                    <input v-model="selectedSize" @change="onChange(element_size.id)" type="radio" :id="element_size.name.toLowerCase()" name="Size" :value="element_size.name">
+                    <label :for="element_size.name.toLowerCase()" class="btn btn-outline-secondary size-product p-2">{{ element_size.name }}</label>
+                </span>
+                <span v-else-if="element_size.name === 'XXL' && sizeStockArray[index] === 0">
+                    <input disabled v-model="selectedSize" @change="onChange(element_size.id)" type="radio" :id="element_size.name.toLowerCase()" name="Size" :value="element_size.name">
+                    <button disabled :for="element_size.name.toLowerCase()" class="btn btn-outline-secondary size-product p-2">{{ element_size.name }}</button>
+                </span>
             </div>
         </div>
-        <div class="row">
+        <div class="row py-2">
             <div class="col-2">
                 <div class="form-group">
                     <select v-model="selectedQuantity" class="form-control p-2 btn btn-outline-secondary">
@@ -41,6 +87,17 @@
                 selectedSize: null,
                 selectedQuantity: 1,
                 totalStock: 1
+            }
+        },
+        computed: {
+            sizeStockArray() {
+                let arrayStock = [];
+
+                this.product_size_stock.forEach(element => {
+                    arrayStock.push(element.total_stock)
+                });
+
+                return arrayStock;
             }
         },
         methods: {
